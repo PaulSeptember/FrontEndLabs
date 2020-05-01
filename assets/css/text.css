@@ -1,0 +1,39 @@
+.description-text {
+	font-family: Verdana;
+	font-size: 16px;
+	color: #333;
+}
+
+.sections-text {
+	font-family: Verdana;
+	font-size: 24px;
+	color: #333;
+}
+
+.chart-position-text{
+	font-family: Verdana;
+}
+
+.song-name {
+	font-family: Verdana;
+}
+
+.song-author {
+	font-family: Verdana;
+	color: #999;
+}
+
+.playlist-name {
+	font-family: Verdana;
+
+}
+
+.playlist-description {
+	font-family: Verdana;
+	font-size: 13px;
+	color: #999;
+}
+
+.genre-selector-label{
+	font-family: Verdana;
+}

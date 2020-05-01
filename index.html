@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Play Music</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Pavel Kamenko">
+	<meta name="description" content="Yoptify - online player, that mimicres under Yandex.Music">
+	
+	<link rel="stylesheet" type="text/css" href="assets/css/basicElements.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/headerStyle.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/button.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/sectionsСontainer.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/text.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/liButtonStyle.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/chartStyle.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/genresStyle.css">
+	<!--link rel="stylesheet" type="text/css" href="assets/css/footerStyle.css"-->
+</head>
+
+<body>
+	<header class="header">
+		
+		<div id="header-left-part">
+			<a href="index.html" id="div-music-player-name">Yoptify</a>	
+			<input id="search-input" size="40" value="Search">
+		</div>
+
+
+		<div id="block-auth">
+			<a class="btn-light-red" href="authentication.html">Log in</a>
+			<p id="div-or">or</p>
+			<a class="btn-light-red" href="registration.html">Register</a>
+		</div>
+
+	</header>
+
+	<main id="main-container">
+		<nav class="navigation-container">
+			<h1 id="navigation-title">Home</h1>
+			<div id="navigation">
+				<a class="navigation-ref" href="#playlists-title">Playlists</a>
+				<a class="navigation-ref" href="#releases-title">New releases</a>
+				<a class="navigation-ref" href="#chart-title">Chart</a>
+				<a class="navigation-ref" href="#genres-title">Genres</a>
+				<a class="navigation-ref" href="#artitsts-title">Artists</a>
+			</div>
+			<!--hr id="navigation_line" align="center" width="500" size="2" color="#636363" /-->
+		</nav>
+		
+		<section class="playlist-container">
+			<h2 class="sections-text" id="playlists-title">Your playlists</h2>
+			<p class="description-text">Create your own playlists</p>
+			<div class="div-li-button">
+				<!-- Кнопки для добавления/просмотра плейлиста -->
+				<ul class="box-items">
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">New playlist</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+			
+		<section class="releases-container">
+			<h2 class="sections-text" id="releases-title">New releases</h2>
+			<div class="description-text">
+				The most popular releases, albums and mixes 
+			</div>
+			<div class="div-li-button">
+				<!-- Кнопки для добавления/просмотра плейлиста -->
+				<ul class="box-items">
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+					<li class="li-buttom">
+						<a href="#"><img class="image-add-playlist" src="assets/images/AddPlaylist.png" alt="Cover"></img></a> 
+						<p class="playlist-name">Playlist_Name</p>
+						<p class="playlist-description">Playlist_Description</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="chart-container">
+			<h2 class="sections-text" id="chart-title">Chart</h2>
+			<div class="description-text">
+				Top 15 most popular songs of last week 
+			</div>
+			<div>
+				<ul class="chart-items">
+					<li class="song-item">
+						<p class="chart-position-text">1</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">2</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">3</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">4</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">5</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">6</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">7</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">8</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">9</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">10</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">11</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">12</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">13</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">14</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+
+					<li class="song-item">
+						<p class="chart-position-text">15</p>
+						<div class="image-song-div">
+							<a class="image-song-a" href="#">
+								<img class="image-song" src="assets/images/AddPlaylist.png" alt="Cover"/>
+								<div class="middle">
+    								<img class="text-h" src="assets/icon/Play.png" alt="Cover"/>
+  								</div>
+  							</a>
+						</div>
+						<p class="song-name">Astronomia 2K19</p>
+						<p class="song-author">StephanF</p>
+					</li>
+				</ul>	
+			</div>
+			
+		</section>
+
+		<section class="genres-container">
+			<h2 class="sections-text" id="genres-title">Genres</h2>
+			<div class="description-text">Select some genres and we will try to find </div>
+			<div id=genre-selection>
+				<div class="genre-selector-div">
+					<input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox1">
+					<label for="genre-selector-checkbox1" class="genre-selector-label">Alternative</label>
+				</div>
+
+				<div class="genre-selector-div">
+					<input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox2">
+					<label for="genre-selector-checkbox2" class="genre-selector-label">Punk</label>
+				</div>
+
+				<div class="genre-selector-div">
+					<input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox3">
+					<label for="genre-selector-checkbox3" class="genre-selector-label">Classic</label>
+				</div>
+
+				<div class="genre-selector-div">
+					<input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox4">
+					<label for="genre-selector-checkbox4" class="genre-selector-label">Pop</label>
+				</div>
+
+				<div class="genre-selector-div">
+					<input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox5">
+					<label for="genre-selector-checkbox5" class="genre-selector-label">Jazz</label>
+				</div>
+
+				<div class="genre-selector-div">
+					<input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox6">
+					<label for="genre-selector-checkbox6" class="genre-selector-label">Electro</label>
+				</div>
+
+				<div class="genre-selector-div">
+					<input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox7">
+					<label for="genre-selector-checkbox7" class="genre-selector-label">Rap and Hip-Hop</label>
+				</div>
+			</div>
+			<button id="genres-select-button" class="btn-red">Find</a>
+		</section>
+		<section class="artists-container">
+			<h2 class="sections-text" id="artitsts-title">Artists</h2>
+			<div class="description-text">
+				Most popular artitsts
+			</div>
+			
+		</section>
+	</main>
+
+	<footer>
+		<nav>
+			<p>Get back</p>
+			<ul>
+				<li><a href="#playlists-title">Playlists</a></li>
+				<li><a href="#releases-title">New releases</a></li>
+				<li><a href="#chart-title">Chart</a></li>
+				<li><a href="#genres-title">Genres</a></li>
+				<li><a href="#artitsts-title">Artists</a></li>
+			</ul>
+		</nav>
+		<div>
+		</div>
+		<div>
+		</div>
+	</footer>
+
+</body>
+</html>

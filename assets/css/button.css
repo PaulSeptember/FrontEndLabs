@@ -1,0 +1,45 @@
+/* btn */
+.btn-light-red {
+  margin: 10px 10px;  
+  padding: 5px 7px;
+  border-radius: 50px;
+  border: 2px solid;
+  font: 14px Verdana;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+  color: #f3f3f3;
+  border-color: #f3f3f3;
+  background: -webkit-linear-gradient(left, #f00000, #f00000) no-repeat;
+  background: linear-gradient(to right, #f3f3f3, #f3f3f3) no-repeat;
+  background-size: 0% 100%;
+}
+.btn-light-red:hover {
+  background-size: 100% 100%;
+  color: #333333;
+}
+
+/* btn */
+.btn-red {
+  margin: 10px 10px;  
+  padding: 5px 7px;
+  border-radius: 50px;
+  border: 2px solid;
+  font: 14px Verdana;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+  color: #ff0000;
+  border-color: #ff0000;
+  background: -webkit-linear-gradient(left, #f00000, #f00000) no-repeat;
+  background: linear-gradient(to right, #f3f3f3, #f3f3f3) no-repeat;
+  background-size: 0% 100%;
+}
+.btn-red:hover {
+  background-size: 100% 100%;
+  color: #333333;
+}

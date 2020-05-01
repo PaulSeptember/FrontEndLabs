@@ -1,0 +1,97 @@
+#main-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.navigation-container {
+	padding: 1%;
+	margin-left: 1%;
+	margin-top: 2%; 
+	display: flex;
+	flex-direction: column;
+	background-color: #f3f3f3;
+}
+
+#navigation {
+	display: flex;
+	padding-bottom: 0px;
+	margin-top: 1%;
+	margin-right: 3%;  
+	border-bottom: 1px solid  #333;
+}
+
+#navigation-title {
+	font-family: Verdana;
+	font-size: 32px;
+}
+
+.navigation-ref {
+	font-family: Verdana;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #333333;
+	margin-right: 5%; 
+}
+
+.navigation-ref:hover {
+	color: #f00000;
+	
+	/*text-decoration: underline;*/
+}
+
+
+
+.playlist-container {
+	margin-top: 4%; 
+	margin-left: 2%;
+	display: flex;
+	flex-direction: column;
+	min-height: 30vh;
+	background-color: #f3f3f3;
+}
+
+.releases-container {
+	margin-top: 4%; 
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+	min-height: 30vh;
+	background-color: #f3f3f3;
+}
+
+.chart-container {
+	margin-top: 4%; 
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+	min-height: 30vh;
+	background-color: #f3f3f3;
+
+}
+
+.genres-container {
+	margin-top: 4%; 
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+	min-height: 30vh;
+	background-color: #f3f3f3;
+}
+
+.artists-container {	
+	margin-top: 4%; 
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+	min-height: 30vh;
+	background-color: #f3f3f3;
+}
+
+
+.div-music-artists-list {
+	padding-top: 1%;
+	padding-left: 4%;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 20px;
+	font-style: italic;
+}

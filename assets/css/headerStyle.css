@@ -1,0 +1,37 @@
+.header {
+	display: flex;
+	justify-content:space-between; 
+}
+
+#header-left-part{
+	display: flex;
+	justify-content: flex-start;
+	padding-left: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: Verdana;
+	font-size: 30px;
+}
+
+#div-music-player-name{
+	color: #f3f3f3;
+}
+
+#search-input{
+	margin-left: 20px;
+	margin-top: 3px;
+	height: 30px;
+	border: 1px solid #f00000;
+  	border-radius: 30px;
+  	padding-left: 12px;
+}
+
+#block-auth {
+	display: flex;
+	font-family: Verdana;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 10px;
+	font-size: 14px;
+	color: #f3f3f3;
+}

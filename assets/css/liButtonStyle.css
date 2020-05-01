@@ -1,0 +1,31 @@
+.div-li-button {	
+	margin-top: 2%;
+}
+
+.box-items{
+	display: flex;		
+	justify-content: flex-start;
+	height: 25vh;
+}
+
+.li-buttom {
+	transition: .25s ease;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding: 10px 10px 30px 10px;
+	height: 200px;
+	width: 160px;
+	list-style-type: none;
+	border: 2px solid #f3f3f3;
+}
+
+.li-buttom:hover {
+	transition: .25s ease;
+	border: 2px solid #ffdb4d;
+	color: #ffdb4d;
+}
+
+.image-add-playlist {
+	height: 160px;
+	width: 160px;	
+}
