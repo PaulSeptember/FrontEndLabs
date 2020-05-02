@@ -3,9 +3,41 @@
 }
 
 .box-items{
-	display: flex;		
+	display: flex;
+	flex-wrap: wrap;		
 	justify-content: flex-start;
-	height: 25vh;
+}
+
+.playlist-name-link:hover {
+	color: #f00000;
+}
+.playlist-name-link{
+	color: #333;
+}
+
+.playlist-mame:hover {
+	color: #f00000;
+}
+
+.playlist-div{
+	position: relative;
+}
+
+.play-button{
+	height: 40px;
+	width: 40px;
+	transition: .25s ease;
+}
+
+.middle-playlist {
+  transition: .25s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .li-buttom {
@@ -19,10 +51,17 @@
 	border: 2px solid #f3f3f3;
 }
 
+.li-buttom:hover .image-add-playlist {
+  opacity: 0.3;
+}
+
+.li-buttom:hover .middle-playlist {
+  opacity: 1;
+}
+
 .li-buttom:hover {
 	transition: .25s ease;
 	border: 2px solid #ffdb4d;
-	color: #ffdb4d;
 }
 
 .image-add-playlist {

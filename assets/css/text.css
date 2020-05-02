@@ -25,7 +25,10 @@
 
 .playlist-name {
 	font-family: Verdana;
+}
 
+.playlist-name-link{
+	font-family: Verdana;
 }
 
 .playlist-description {
@@ -36,4 +39,9 @@
 
 .genre-selector-label{
 	font-family: Verdana;
+}
+
+.artist-text{
+	font-family: Verdana;
+	color: #333;
 }

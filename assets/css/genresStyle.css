@@ -18,19 +18,20 @@
 }
 
 .genre-selector-checkbox + .genre-selector-label{
-	color: #ff0000;
-	border: 2px solid #ff0000; 
+	color: #f00000;
+	border: 2px solid #f00000; 
 	border-radius: 15px;
 	background-color: #f3f3f3;
 }
 
 .genre-selector-checkbox:checked + .genre-selector-label{
 	color: #f3f3f3;
-	background-color: #ff0000;
+	background-color: #f00000;
 	border-radius: 15px;
-	border: 2px solid #ff0000; 
+	border: 2px solid #f00000; 
 }
 
 #genres-select-button{
 	width: 100px;
+	margin-left: 15px; 
 }
