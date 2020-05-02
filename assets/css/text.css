@@ -1,26 +1,28 @@
 .description-text {
 	font-family: Verdana;
 	font-size: 16px;
-	color: #333;
+	color: var(--color6);
 }
 
 .sections-text {
 	font-family: Verdana;
 	font-size: 24px;
-	color: #333;
+	color: var(--color6);
 }
 
 .chart-position-text{
+	color: var(--color6);
 	font-family: Verdana;
 }
 
 .song-name {
+	color: var(--color6);
 	font-family: Verdana;
 }
 
 .song-author {
 	font-family: Verdana;
-	color: #999;
+	color: var(--color3);
 }
 
 .playlist-name {
@@ -34,7 +36,7 @@
 .playlist-description {
 	font-family: Verdana;
 	font-size: 13px;
-	color: #999;
+	color: var(--color3);
 }
 
 .genre-selector-label{
@@ -43,5 +45,5 @@
 
 .artist-text{
 	font-family: Verdana;
-	color: #333;
+	color: var(--color6);
 }

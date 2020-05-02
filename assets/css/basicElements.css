@@ -7,8 +7,24 @@ html {
     padding: 0;
 }
 
+:root {
+  /*header, active links*/
+  --color1: #e00000;
+  /*background*/	
+  --color2: #f3f3f3;
+  /*songs and playlists desc text*/
+  --color3: #999999;
+  /*frames*/
+  --color4: #e00000;
+  /**/
+  --color5: #dead00;
+  /*text, links*/
+  --color6: #333333;
+}
+
+
 header {
-	background: #f00000;
+	background: var(--color1);
 	height: 10%;
 }
 
@@ -18,12 +34,12 @@ a {
 } 
 
 body {
-	background-color: #f3f3f3;
+	background-color: var(--color2);
 }
 
 
 footer {
 	width: 100%;
-	background-color: #f00000;
+	background-color: var(--color1);
 }
 

@@ -12,7 +12,7 @@
 	color: #f00000;
 }
 .playlist-name-link{
-	color: #333;
+	color: var(--color6);
 }
 
 .playlist-mame:hover {
@@ -48,7 +48,7 @@
 	height: 200px;
 	width: 160px;
 	list-style-type: none;
-	border: 2px solid #f3f3f3;
+	border: 2px solid var(--color2);
 }
 
 .li-buttom:hover .image-add-playlist {
