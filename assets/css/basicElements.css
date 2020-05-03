@@ -9,17 +9,17 @@ html {
 
 :root {
   /*header, active links*/
-  --color1: #e00000;
+  --color1: #ba0020;
   /*background*/	
-  --color2: #f3f3f3;
+  --color2: #fff;
   /*songs and playlists desc text*/
   --color3: #999999;
   /*frames*/
   --color4: #e00000;
   /**/
-  --color5: #dead00;
+  --color5: #ba0020;
   /*text, links*/
-  --color6: #333333;
+  --color6: #000000;
 }
 
 
@@ -34,12 +34,12 @@ a {
 } 
 
 body {
-	background-color: var(--color2);
+	background-color: #f1f1f1;
 }
 
 
 footer {
 	width: 100%;
-	background-color: var(--color1);
+	background-color: #fff;
 }
 

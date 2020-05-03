@@ -18,17 +18,17 @@
 }
 
 .genre-selector-checkbox + .genre-selector-label{
-	color: #f00000;
-	border: 2px solid #f00000; 
+	transition: .25s ease;
+	color: var(--color1);
+	border: 2px solid var(--color1); 
 	border-radius: 15px;
 	background-color: var(--color2);
 }
 
 .genre-selector-checkbox:checked + .genre-selector-label{
-	color: var(--color2);
-	background-color: #f00000;
-	border-radius: 15px;
-	border: 2px solid #f00000; 
+	transition: .25s ease;
+	background-color: #ffd0d0;
+	border: 2px solid var(--color1); 
 }
 
 #genres-select-button{

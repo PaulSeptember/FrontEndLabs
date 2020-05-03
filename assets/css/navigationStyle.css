@@ -1,0 +1,33 @@
+
+#navigation {
+	display: flex;
+	padding-bottom: 0px;
+	margin-top: 1%;
+	margin-right: 3%;  
+}
+
+#navigation-title {
+	font-family: Cabin;
+	font-weight: 900;
+	font-size: 32px;
+	color: var(--color6);
+}
+
+.navigation-ref {
+	transition: 0.25s;
+	padding-bottom: 10px;
+	font-family: Montserrat;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #666;
+	margin-right: 5%; 
+	border-bottom: 2px solid #fff;
+}
+
+.navigation-ref:hover {
+	transition: 0.25s;
+	color: var(--color6);
+	border-bottom: 2px solid #000;
+		/*text-decoration: underline;*/
+}
+

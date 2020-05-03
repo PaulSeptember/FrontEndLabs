@@ -34,13 +34,12 @@
   -webkit-transition: all .25s;
   transition: all .25s;
   text-align: center;
-  color: #333333;
-  border-color: #ff0000;
-  background-color: #ff0000;
+  color: var(--color2);
+  border-color: var(--color1);
+  background-color: var(--color1);
 }
 .btn-red:hover {
-  background-color: #f00000;
-  color: #333333;
+  background-color: var(--color5);
 }
 
 
@@ -56,11 +55,11 @@
   cursor: pointer;
   text-align: center;
   transition: .25s;
-  color: #333333;
-  border-color: #ff0000;
+  color: #000;
+  border-color: var(--color1);
   background-color: #f3f3f3;
 }
 
 .btn-light-red:hover {
-  color: #333333;
+  color: #000;
 }

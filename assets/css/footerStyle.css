@@ -12,15 +12,14 @@
 }
 
 .get-back-title {
-	font-family: Verdana;
+	font-family: Cabin;
 	font-size: 16px;
 	margin-bottom: 10px;
 }
 
 .get-back-list {
-	font-family: Verdana;
+	font-family: Montserrat;
 	font-size: 14px;
-	border-bottom: 1px solid var(--color6); 
 }
 
 .get-back-list-item{
@@ -29,15 +28,15 @@
 }
 
 .get-back-link{
-	color: var(--color6);
+	color: #666;
 }
 
-.get-back-link:hover{
-	color: var(--color2);
+.get-back-link:hover {
+	color: #000;
 }
 
 .send-bugs-link{
-	font-family: Verdana;
+	font-family: Montserrat;
 	font-size: 16px;
 	text-align: right;
 	color: var(--color6);
@@ -53,7 +52,7 @@
 }
 
 .credits{
-	font-family: Verdana;
+	font-family: Montserrat;
 	font-size: 14px;
 	color: var(--color6);
 }

@@ -9,14 +9,10 @@
 }
 
 .playlist-name-link:hover {
-	color: #f00000;
+	color: var(--color1);
 }
 .playlist-name-link{
 	color: var(--color6);
-}
-
-.playlist-mame:hover {
-	color: #f00000;
 }
 
 .playlist-div{
@@ -48,11 +44,11 @@
 	height: 200px;
 	width: 160px;
 	list-style-type: none;
-	border: 2px solid var(--color2);
+	/*border: 2px solid var(--color2);*/
 }
 
 .li-buttom:hover .image-add-playlist {
-  opacity: 0.3;
+  opacity: 1;
 }
 
 .li-buttom:hover .middle-playlist {
@@ -61,10 +57,19 @@
 
 .li-buttom:hover {
 	transition: .25s ease;
-	border: 2px solid #ffdb4d;
+	/*border: 2px solid var(--color1);*/
+	
+	/*border: 2px solid #f3f3f3;*/
+	border-radius: 5px;
+	box-shadow: 3px 3px 6px #aaa;
+}
+.li-buttom:hover{
+	transition: .25s ease;
+	transform: scale(1.07);
 }
 
 .image-add-playlist {
+	border-radius: 5px;
 	height: 160px;
 	width: 160px;	
 }

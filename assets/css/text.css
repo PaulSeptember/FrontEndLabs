@@ -1,11 +1,11 @@
 .description-text {
-	font-family: Verdana;
+	font-family: Montserrat;
 	font-size: 16px;
 	color: var(--color6);
 }
 
 .sections-text {
-	font-family: Verdana;
+	font-family: Montserrat;
 	font-size: 24px;
 	color: var(--color6);
 }
@@ -17,24 +17,26 @@
 
 .song-name {
 	color: var(--color6);
-	font-family: Verdana;
+	font-family: Montserrat;
+	font-weight: 400;
 }
 
 .song-author {
-	font-family: Verdana;
+	font-family: Montserrat;
 	color: var(--color3);
 }
 
 .playlist-name {
-	font-family: Verdana;
+	font-family: Montserrat;
 }
 
 .playlist-name-link{
-	font-family: Verdana;
+	font-family: Montserrat;
+	font-weight: 500;
 }
 
 .playlist-description {
-	font-family: Verdana;
+	font-family: Montserrat;
 	font-size: 13px;
 	color: var(--color3);
 }
@@ -44,6 +46,6 @@
 }
 
 .artist-text{
-	font-family: Verdana;
+	font-family: Montserrat;
 	color: var(--color6);
 }

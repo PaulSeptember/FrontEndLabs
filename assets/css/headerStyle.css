@@ -1,6 +1,7 @@
 .header {
 	display: flex;
 	justify-content:space-between; 
+	box-shadow: 3px 3px 6px #bbb;
 }
 
 #header-left-part{

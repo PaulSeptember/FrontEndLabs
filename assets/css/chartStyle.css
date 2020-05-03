@@ -41,7 +41,8 @@
 
 .song-item:hover {
 	transition: .25s ease;
-	border: 2px solid #ffdb4d;
+	border: 2px solid var(--color1);
+	border-radius: 5px;
 }
 
 .song-item:hover .image-song {
