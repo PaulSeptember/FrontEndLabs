@@ -4,7 +4,7 @@
 }
 
 .navigation-container {
-	padding: 1%;
+	padding: 15px;
 	padding-bottom: 0;
 	/*margin: 1%;*/
 	margin-bottom: 0; 
@@ -16,8 +16,8 @@
 
 .playlist-container {
 	margin: 1%;
-	padding: 1%;
-	padding-left: 1.5%;
+	padding: 15px;
+	padding-left: 23px;
 	margin-bottom: 0; 
 	display: flex;
 	flex-direction: column;
@@ -29,9 +29,9 @@
 
 .releases-container {
 	margin: 1%;
-	padding: 1%;
-	padding-left: 1.5%;
-	margin-bottom: 0; 
+	padding: 15px;
+	padding-left: 23px;
+	margin-bottom: 0;
 	display: flex;
 	flex-direction: column;
 	min-height: 30vh;
@@ -43,8 +43,8 @@
 
 .chart-container {
 	margin: 1%;
-	padding: 1%;
-	padding-left: 1.5%;
+	padding: 15px;
+	padding-left: 23px;
 	margin-bottom: 0; 
 	display: flex;
 	flex-direction: column;
@@ -55,7 +55,8 @@
 
 .genres-container {
 	margin: 1%;
-	padding: 1%;
+	padding: 15px;
+	padding-left: 23px;
 	margin-bottom: 0; 
 	display: flex;
 	flex-direction: column;
@@ -66,7 +67,8 @@
 
 .artists-container {	
 	margin: 1%;
-	padding: 1%;
+	padding: 15px;
+	padding-left: 23px;
 	display: flex;
 	flex-direction: column;
 	min-height: 30vh;

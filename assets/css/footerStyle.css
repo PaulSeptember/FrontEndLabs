@@ -1,10 +1,6 @@
 #footer-div { 
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: space-between;
-	align-items: center;
-    height: 10vh;
-    position: relative;
 }
 
 #footer-nav {
@@ -13,13 +9,13 @@
 
 .get-back-title {
 	font-family: Cabin;
-	font-size: 16px;
+	font-size: 1em;
 	margin-bottom: 10px;
 }
 
 .get-back-list {
 	font-family: Montserrat;
-	font-size: 14px;
+	font-size: 0.875em;
 }
 
 .get-back-list-item{
@@ -37,7 +33,7 @@
 
 .send-bugs-link{
 	font-family: Montserrat;
-	font-size: 16px;
+	font-size: 1em;
 	text-align: right;
 	color: var(--color6);
 }
@@ -47,12 +43,12 @@
 }
 
 #credits-div{
-	padding: 15px; 
+	padding: 0.875em; 
 	margin-left: auto;
 }
 
 .credits{
 	font-family: Montserrat;
-	font-size: 14px;
+	font-size: 0.875em;
 	color: var(--color6);
 }

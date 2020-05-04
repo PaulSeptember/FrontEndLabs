@@ -23,8 +23,8 @@
 }
 
 .image-song{
-	height: 40px;
-	width: 40px;
+	height: 2.5em;
+	width: 2.5em;
 	transition: .25s ease;
 }
 
@@ -54,8 +54,8 @@
 }
 
 .text-h {
-  height: 40px;
-  width: 40px;
+  height: 2.5em;
+  width: 2.5em;
 }
 
 .chart-position-text{
@@ -74,4 +74,13 @@
 	grid-column: 3;
 	grid-row: 2;
 	margin-left: 5px;
+}
+
+@media only screen and (max-width: 1024px){
+	.chart-items{
+		height: 900px;
+	}
+	.chart-position-text{
+		margin-right: 1em;
+	}
 }

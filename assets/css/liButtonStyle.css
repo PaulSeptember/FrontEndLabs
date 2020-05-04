@@ -20,8 +20,8 @@
 }
 
 .play-button{
-	height: 40px;
-	width: 40px;
+	height: 3.5em;
+	width: 3.5em;
 	transition: .25s ease;
 }
 
@@ -41,8 +41,8 @@
 	margin-right: 10px;
 	margin-bottom: 10px;
 	padding: 10px 10px 30px 10px;
-	height: 200px;
-	width: 160px;
+	height: 12.5em;
+	width: 10em;
 	list-style-type: none;
 	/*border: 2px solid var(--color2);*/
 }
@@ -70,6 +70,6 @@
 
 .image-add-playlist {
 	border-radius: 5px;
-	height: 160px;
-	width: 160px;	
+	height: 10em;
+	width: 10em;	
 }
