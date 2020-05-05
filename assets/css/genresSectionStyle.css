@@ -1,0 +1,45 @@
+#genre-selection{
+	display: flex;
+	flex-wrap: wrap;
+  	flex-direction: row;
+}
+
+.genre-selector-div{
+	height: 40px;
+	margin-top: 20px;
+}
+
+.genre-selector-checkbox{
+	visibility: hidden;
+}
+
+.genre-selector-label{
+	padding: 5px 10px;
+}
+
+.genre-selector-checkbox + .genre-selector-label{
+	transition: .25s ease;
+	color: var(--color1);
+	border: 2px solid var(--primaryColor); 
+	border-radius: 666px;
+	background-color: var(--backgroundLightColor);
+}
+
+.genre-selector-checkbox:checked + .genre-selector-label{
+	transition: .25s ease;
+	background-color: #f45c43;
+	color: var(--backgroundLightColor);
+	border: 2px solid var(--primaryColor); 
+}
+
+#genres-select-button{
+	width: 100px;
+	margin-left: 15px; 
+}
+
+@media only screen and (max-width: 1024px){
+	#genres-select-button{
+		margin: auto;
+		margin-top: 1em;
+	}
+}

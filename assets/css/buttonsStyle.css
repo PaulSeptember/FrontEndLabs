@@ -1,0 +1,53 @@
+.btn-animated {
+  margin: 10px 10px;  
+  padding: 8px 10px;
+  border-radius: 50px;
+  border: 2px solid var(--backgroundLightColor);
+  font: 0.875em Verdana;
+  transition: all .25s;
+  color: var(--backgroundLightColor);
+  background: linear-gradient(to right, var(--backgroundLightColor), var(--backgroundLightColor)) no-repeat;
+  background-size: 0% 100%;
+}
+.btn-animated:hover {
+  background-size: 100% 100%;
+  color: var(--color6);
+}
+
+
+.btn-red {
+  margin: 5px 0px;  
+  padding: 5px 7px;
+  border-radius: 50px;
+  border: 2px solid var(--primaryColor);
+  font: 0.875em Verdana;
+
+  transition: all .25s;
+  text-align: center;
+  color: var(--backgroundLightColor);
+  background-color: var(--primaryColor);
+}
+.btn-red:hover {
+  background-color: var(--color5);
+  border-color: var(--color5);
+}
+
+
+
+.btn-light-red {
+  margin: 5px 0px;  
+  padding: 5px 7px;
+  border-radius: 50px;
+  border: 2px solid;
+  font: 0.875em Verdana;
+  
+
+  transition: .25s;
+  color: var(--color6);
+  text-align: center;
+  border-color: var(--primaryColor);
+  background-color: none;
+}
+.btn-light-red:hover {
+  /*TODO find pretty color*/
+}

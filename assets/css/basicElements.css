@@ -3,15 +3,15 @@ html {
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
   /*header, active links*/
-  --color1: #eb3349;
+  --primaryColor: #eb3349;
   /*background*/	
-  --color2: #fff;
+  --backgroundLightColor: #fff;
   /*songs and playlists desc text*/
   --color3: #999999;
   /*frames*/
@@ -21,8 +21,6 @@ html {
   /*text, links*/
   --color6: #000000;
 }
-
-
 
 a { 
 	text-decoration: none;
@@ -46,9 +44,4 @@ body {
 	background-color: #f1f1f1;
 }
 
-
-footer {
-	width: 100%;
-	background-color: #fff;
-}
 

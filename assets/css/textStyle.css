@@ -1,0 +1,51 @@
+.description-text {
+	font-family: Montserrat;
+	font-size: 1em;
+	color: var(--color6);
+}
+
+.sections-text {
+	font-family: Montserrat;
+	font-size: 1.5em;
+	color: var(--color6);
+}
+
+.chart-position-text{
+	color: var(--color6);
+	font-family: Verdana;
+}
+
+.song-name {
+	color: var(--color6);
+	font-family: Montserrat;
+	font-weight: 400;
+}
+
+.song-author {
+	font-family: Montserrat;
+	color: var(--color3);
+}
+
+.playlist-name {
+	font-family: Montserrat;
+}
+
+.playlist-name-link{
+	font-family: Montserrat;
+	font-weight: 500;
+}
+
+.playlist-description {
+	font-family: Montserrat;
+	font-size: 0.8em;
+	color: var(--color3);
+}
+
+.genre-selector-label{
+	font-family: Verdana;
+}
+
+.artist-text{
+	font-family: Montserrat;
+	color: var(--color6);
+}

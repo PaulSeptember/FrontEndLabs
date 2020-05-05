@@ -7,7 +7,7 @@
 
 
 #div-music-player-name{
-	color: var(--color2);
+	color: var(--backgroundLightColor);
 	font-size: 1em;
 }
 
@@ -15,8 +15,8 @@
 	margin-left: 20px;
 	margin-top: 3px;
 	height: 2.5em;
-	border: 1px solid var(--color1);
-	background-color: var(--color2);
+	border: 1px solid var(--primaryColor);
+	background-color: var(--backgroundLightColor);
 	color: #000;
 	transition: width 0.75s;
     width: 250px;
@@ -35,7 +35,24 @@
 	padding-left: 20px;
 	padding-top: 16px;
 	padding-bottom: 15px;
+}
+
+#div-music-player-name{
+	font-size: 1.875em;
 	font-family: Verdana;
+}
+
+#block-auth {
+	display: flex;
+	font-family: Verdana;
+	justify-content: flex-end;
+	margin: auto 10px;
+	margin-right: 10px;
+	color: #f3f3f3;
+}
+#div-or{
+	margin :auto;
+	font-size: 0.875em;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -55,21 +72,4 @@
 	transition: width 0.75s;
 	width: 500px;
 	}
-}
-
-#div-music-player-name{
-	font-size: 1.875em;
-}
-
-#block-auth {
-	display: flex;
-	font-family: Verdana;
-	justify-content: flex-end;
-	margin: auto 10px;
-	margin-right: 10px;
-	color: #f3f3f3;
-}
-#div-or{
-	margin :auto;
-	font-size: 0.875em;
 }
