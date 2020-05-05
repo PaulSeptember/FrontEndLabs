@@ -51,8 +51,9 @@
 	color: #f3f3f3;
 }
 #div-or{
-	margin :auto;
+	margin :auto 10px;
 	font-size: 0.875em;
+
 }
 
 @media only screen and (max-width: 1024px) {
