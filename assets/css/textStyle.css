@@ -15,10 +15,32 @@
 	font-family: Verdana;
 }
 
+.playlist-page-name{
+	font-size: 2em;
+	font-family: Montserrat;
+}
+
+.playlistDescription{
+	font-size: 1em;
+	font-family: Montserrat;
+}
+
+.playlist-duration{
+	font-size: 1em;
+	font-family: Montserrat;
+	color: var(--color3);
+}
+
 .song-name {
 	color: var(--color6);
 	font-family: Montserrat;
 	font-weight: 400;
+}
+
+.duration{
+	color: var(--color6);
+	font-family: Montserrat;
+	font-size: 0.85em;
 }
 
 .song-author {
