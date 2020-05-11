@@ -1,4 +1,4 @@
-.currentPlaylist{
+.playlist-page-section{
     margin: 1%;
     margin-bottom: 1%; 
     display: flex;
@@ -10,11 +10,11 @@
     min-height: 80vh;
 }
 
-.playlistMainInfo{
+.playlist-page-info-div{
     margin: 10px;
 }
 
-.playlistDescription{
+.playlist-page-description{
     margin-top: 10px;
 }
 
@@ -29,7 +29,7 @@
     border-top: 2px solid #aaa;
 }
 
-.playlistInfo{
+.playlist-head-div{
     display: flex;
     flex-direction: row;
 }
