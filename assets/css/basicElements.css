@@ -1,0 +1,40 @@
+html {
+	scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /*header, active links*/
+  --primaryColor: #eb3349;
+  /*background*/	
+  --backgroundLightColor: #fff;
+  /*songs and playlists desc text*/
+  --color3: #999999;
+  /*frames*/
+  --color4: #e00000;
+  /**/
+  --color5: #ba0020;
+  /*text, links*/
+  --color6: #000000;
+}
+
+a { 
+	text-decoration: none;
+	outline: none;
+} 
+
+@media only screen and (max-width: 1024px) {
+  body{
+    font-size: 32px;
+  }  
+}
+
+body {
+	background-color: #f1f1f1;
+}
+
+

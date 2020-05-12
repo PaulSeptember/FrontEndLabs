@@ -1,0 +1,65 @@
+/* Playlists */
+.playlists-container {
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+}
+
+.playlist-items {
+    padding-top: 10px;
+    min-height: 210px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.playlist-item:hover {
+    transition: .25s ease;
+}
+
+.playlist-item {
+    margin: 5px 20px 0 0;
+    padding: 15px;
+    height: 13.125em;
+    width: 10em;
+    background-color: #666666;
+    border-radius: 1.25em;
+}
+
+.playlist-div {
+    position: relative;
+}
+
+.playlist-item:hover .playlist-play-btn {
+    opacity: 1; 
+}
+
+.playlist-img {
+    width: 10em;
+    height: 10em;
+    margin-bottom: 5px;
+}
+
+.playlist-play-btn {
+    opacity: 0;
+    transition: .25s ease;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.playlist-name-link {
+    color: #ededed;
+}
+
+.playlist-description {
+    color: #cccccc
+}
+
+@media only screen and (max-width: 1024px) {
+    .playlist-items {
+        overflow: scroll;
+        scrollbar-width: none;
+    }
+}
