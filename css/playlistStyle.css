@@ -117,17 +117,17 @@
   text-align: center;
 }
 
-.song-item:hover {
+.playlist-song-item:hover {
     transition: .25s ease;
     border: 2px solid var(--primaryColor);
     border-radius: 5px;
 }
 
-.song-item:hover .image-song {
+.playlist-song-item:hover .image-song {
   opacity: 0.3;
 }
 
-.song-item:hover .middle {
+.playlist-song-item:hover .middle {
   opacity: 1;
 }
 

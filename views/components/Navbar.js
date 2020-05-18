@@ -52,6 +52,17 @@ let Navbar = {
                 nick_name_p.classList.add('hide');
             }
         });
+
+        const searchInput = document.getElementById("header-search-input");
+        searchInput.addEventListener("keyup", function(event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.location.href = "/#/search/" + searchInput.value;
+        }
+}); 
     }
 
 }

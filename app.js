@@ -5,6 +5,7 @@ import Error404     from './views/pages/Error404.js'
 import PostShow     from './views/pages/PostShow.js'
 import Register     from './views/pages/Register.js'
 import Login        from './views/pages/Login.js'
+import Search       from './views/pages/Search.js'
 
 //import Login        from './views/pages/Login.js'
 import Upload       from './views/pages/Upload.js'
@@ -22,7 +23,7 @@ const routes = {
     , '/register'           : Register
     , '/login'              : Login
     , '/upload'             : Upload
-    //, '/search'
+    , '/search/:id'         : Search
 };
 
 
