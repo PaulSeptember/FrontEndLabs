@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yoptify</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/site.webmanifest">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
+
+    <link rel="stylesheet" type="text/css" href="css/authenticationPageStyle.css">   
+    <link rel="stylesheet" type="text/css" href="css/basicElements.css">
+    <link rel="stylesheet" type="text/css" href="css/buttonsStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/footerStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/navigationSectionStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/playerSectionStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/upload.css">
+    <!--link rel="stylesheet" type="text/css" href="css/playlistStyle.css"-->
+    <link rel="stylesheet" type="text/css" href="css/textStyle.css">
+    <!--script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script-->
+    <script type="module" src="/app.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="/__/firebase/7.14.3/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="/__/firebase/7.14.3/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="/__/firebase/7.14.3/firebase-auth.js"></script>
+    <script src="/__/firebase/7.14.3/firebase-firestore.js"></script>
+
+    <script src="/__/firebase/init.js"></script>
+
+    <script type="module" src="/app.js"></script>
+
+</head>
+
+<body>
+    <header class="header">
+        
+            <div id="header-left-part">
+                <a href="/#/" id="header-music-player-name">Yoptify</a>  
+                <input id="header-search-input" size="40" placeholder ="Search">
+            </div>
+
+
+            <div id="header-block-auth">
+                <p id="nick-name-p" class="hide">Error</p>
+                <button id="log-out-btn" class="btn-animated hide">Log out</button>
+
+                <a id="log-in-link" class="btn-animated" href="/#/login">Log in</a>
+                <p id="header-div-or">or</p>
+                <a id="register-link" class="btn-animated" href="/#/register">Register</a>
+            </div>
+
+        </header>
+    <section id="upload-page-section">
+        <h2 class="sections-text" >Track uploading</h2>
+            <p class="description-text">Upload your own track, add name and author, so all users can listen it!</p>
+
+        <h2 class="upload-helper">Name</h1>
+        <input class="upload-input">
+        <h2 class="upload-helper">Author</h1>
+        <input class="upload-input">
+        <div>
+            <button id="upload-file-button" class="btn-light-red">Select file</button>
+            <a class="upload-link">file</a>
+        </div>
+        <div>
+            <button id="upload-img-button" class="btn-light-red">Add image</button>
+            <a class="upload-link">image</a>
+        </div>
+
+        <button id="upload-button" class="btn-red">Upload</button>
+    </section>
+
+<footer id="footer-div">
+        <nav id="footer-nav">
+            <p class="get-back-title">Get back</p>
+            <ul class="get-back-list">
+                <li class="get-back-list-item"><a class="get-back-link" href="#playlists-title">Playlists</a></li>
+                <li class="get-back-list-item"><a class="get-back-link" href="#releases-title">New releases</a></li>
+                <li class="get-back-list-item"><a class="get-back-link" href="#chart-title">Chart</a></li>
+                <li class="get-back-list-item"><a class="get-back-link" href="/#genres-title">Genres</a></li>
+                <li class="get-back-list-item"><a class="get-back-link" href="#artitsts-title">Artists</a></li>
+            </ul>
+        </nav>
+        <div id="credits-div">
+            <a class="send-bugs-link" href="https://vk.com/emoseptember">Bug report</a>
+            <p class="credits">@September 2020</p> 
+        </div>
+    </footer>
+
+</body>
+    
+</html>

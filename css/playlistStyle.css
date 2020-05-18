@@ -76,8 +76,8 @@
     flex-direction: column;
 }
 
-
-.song-item{
+/*song-item*/
+.playlist-song-item{
     transition: .25s ease;
     padding: 5px;
     padding-bottom: 2px;

@@ -6,17 +6,23 @@ import PostShow     from './views/pages/PostShow.js'
 import Register     from './views/pages/Register.js'
 import Login        from './views/pages/Login.js'
 
+//import Login        from './views/pages/Login.js'
+import Upload       from './views/pages/Upload.js'
 import Navbar       from './views/components/Navbar.js'
 import Bottombar    from './views/components/Bottombar.js' 
-
 import Utils        from './services/Utils.js'
 
-// List of supported routes. Any url other than these routes will throw a 404 error
+
+
+ 
+
 const routes = {
-    '/'             : Home
-    , '/playlist/:id'      : PostShow
-    , '/register'   : Register
-    , '/login'   : Login
+    '/'                     : Home
+    , '/playlist/:id'       : PostShow
+    , '/register'           : Register
+    , '/login'              : Login
+    , '/upload'             : Upload
+    //, '/search'
 };
 
 

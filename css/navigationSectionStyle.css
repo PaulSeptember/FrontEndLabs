@@ -13,6 +13,19 @@
 	box-shadow: 3px 3px 6px #bbb;
 }
 
+.search-results-section{
+	margin: 1%;
+	padding: 15px;
+	padding-left: 23px;
+	min-height: 75vh; 
+	display: flex;
+	flex-direction: column;
+	
+	background-color: var(--backgroundLightColor);
+	border-radius: 5px;
+	box-shadow: 3px 3px 6px #bbb;
+}
+
 .playlist-container {
 	margin: 1%;
 	padding: 15px;
@@ -39,6 +52,7 @@
 	border-radius: 5px;
 	box-shadow: 3px 3px 6px #bbb;
 }
+
 
 .chart-container {
 	margin: 1%;
@@ -67,10 +81,22 @@
 .artists-container {	
 	margin: 1%;
 	padding: 15px;
+	margin-bottom: 0; 
 	padding-left: 23px;
 	display: flex;
 	flex-direction: column;
 	min-height: 30vh;
+	background-color: var(--backgroundLightColor);
+	border-radius: 5px;
+	box-shadow: 3px 3px 6px #bbb;
+}
+
+.upload-container{
+	margin: 1%;
+	padding: 15px;
+	padding-left: 23px;
+	display: flex;
+	flex-direction: column;
 	background-color: var(--backgroundLightColor);
 	border-radius: 5px;
 	box-shadow: 3px 3px 6px #bbb;
@@ -384,5 +410,11 @@
 
 .artist-text{
 	margin: auto 10px;
+}
+
+#upload-main-button{
+	width: 100px;
+	margin-left: 15px; 
+	margin-top: 20px;
 }
 

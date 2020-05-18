@@ -55,6 +55,11 @@
 
 }
 
+#nick-name-p{
+	margin :auto 10px;
+	font-size: 0.875em;
+}
+
 @media only screen and (max-width: 1024px) {
 	#header-left-part{
 		flex-direction: column;

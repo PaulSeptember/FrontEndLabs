@@ -1,38 +1,12 @@
-// --------------------------------
-//  Define Data Sources
-// --------------------------------
 
-let getPostsList = async () => {
-     const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-    try {
-        const response = await fetch(`https://5bb634f6695f8d001496c082.mockapi.io/api/posts`, options)
-        const json = await response.json();
-        // console.log(json)
-        return json
-    } catch (err) {
-        console.log('Error getting documents', err)
-    }
+async function getChart(){
+  const snapshot = await firebase.database().ref('/chart_songs').once('value');
+  return snapshot.val();
 }
 
-/*
- <section class="section">
-                <h1> Home </h1>
-                <ul>
-                    ${ posts.map(post => 
-                        `<li><a href="#/p/${post.id}">${post.title}</a></li>`
-                        ).join('\n ')
-                    }
-                </ul>
-            </section>
-*/
+
 let Home = {
     render : async () => {
-        let posts = await getPostsList()
         let view =  /*html*/
 
         `    
@@ -40,15 +14,16 @@ let Home = {
         <nav class="navigation-container">
             <h1 id="navigation-title">Home</h1>
             <div id="navigation">
-                <a class="navigation-ref" href="#playlists-title">Playlists</a>
+                <a id="playlists-nav" class="navigation-ref hide" href="#playlists-title">Playlists</a>
                 <a id="releases" class="navigation-ref" href="#releases-title">releases</a>
                 <a class="navigation-ref" href="#chart-title">Chart</a>
                 <a class="navigation-ref" href="#genres-title">Genres</a>
                 <a class="navigation-ref" href="#artitsts-title">Artists</a>
+                <a id="upload-nav" class="navigation-ref hide" href="#artitsts-title">Upload</a>
             </div>
         </nav>
         
-        <section class="playlist-container">
+        <section id="my-playlists-id" class="playlist-container hide">
             <h2 class="sections-text" id="playlists-title">Your playlists</h2>
             <p class="description-text">Create your own playlists</p>
             <div class="playlists-div">
@@ -77,66 +52,7 @@ let Home = {
                         <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
                         <p class="playlist-description">Playlist_Description</p>
                     </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
+                    
                 </ul>
             </div>
         </section>
@@ -158,42 +74,7 @@ let Home = {
                         <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
                         <p class="playlist-description">Playlist_Description</p>
                     </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
+           
                 </ul>
             </div>
         </section>
@@ -204,172 +85,7 @@ let Home = {
                 Top 15 most popular songs of last week 
             </div>
             <div>
-                <ul class="chart-items">
-                    <li class="song-item">
-                        <p class="chart-position-text">1</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">2</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">3</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">4</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">5</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">6</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">7</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">8</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">9</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">10</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">11</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">12</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">13</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">14</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-
-                    <li class="song-item">
-                        <p class="chart-position-text">15</p>
-                        <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
-                        </div>
-                        <p class="song-name">Astronomia 2K19</p>
-                        <a class="song-author" href="#">StephanF</a>
-                    </li>
-                </ul>   
+                <ul class="chart-items" id="chart-cont"></ul>   
             </div>
             
         </section>
@@ -409,6 +125,7 @@ let Home = {
             </div>
             <button id="genres-select-button" class="btn-red">Find</a>
         </section>
+
         <section class="artists-container">
             <h2 class="sections-text" id="artitsts-title">Artists</h2>
             <div class="description-text">
@@ -426,63 +143,67 @@ let Home = {
                     </div>
                     <a class="artist-text" href="#">StephanF</a>
                 </li>
-                
-                <li class="artist-list-item">
-                    <div class="artist-image-div">
-                        <a class="artist-link-image" href="#">
-                            <img class="artist-image" src="images/AddPlaylist.png" alt="Cover"/>
-                            <div class="middle-artist">
-                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
-                            </div>
-                        </a>
-                    </div>
-                    <a class="artist-text" href="#">StephanF</a>
-                </li>
-
-                <li class="artist-list-item">
-                    <div class="artist-image-div">
-                        <a class="artist-link-image" href="#">
-                            <img class="artist-image" src="images/AddPlaylist.png" alt="Cover"/>
-                            <div class="middle-artist">
-                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
-                            </div>
-                        </a>
-                    </div>
-                    <a class="artist-text" href="#">StephanF</a>
-                </li>
-
-                <li class="artist-list-item">
-                    <div class="artist-image-div">
-                        <a class="artist-link-image" href="#">
-                            <img class="artist-image" src="images/AddPlaylist.png" alt="Cover"/>
-                            <div class="middle-artist">
-                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
-                            </div>
-                        </a>
-                    </div>
-                    <a class="artist-text" href="#">StephanF</a>
-                </li>
-
-                <li class="artist-list-item">
-                    <div class="artist-image-div">
-                        <a class="artist-link-image" href="#">
-                            <img class="artist-image" src="images/AddPlaylist.png" alt="Cover"/>
-                            <div class="middle-artist">
-                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
-                            </div>
-                        </a>
-                    </div>
-                    <a class="artist-text" href="#">StephanF</a>
-                </li>
             </ul>
+        </section>
+        
+        <section id="upload-container-id" class="upload-container hide">
+            <h2 class="sections-text" id="genres-title">Upload</h2>
+            <div class="description-text">Did not find what you want? Fine. Upload any song you want...</div>
+            <a href="/#/upload" id="upload-main-button" class="btn-red">Upload</a>
         </section>
     </main>   
         `
         return view
+
     }
     , after_render: async () => {
+        const chartContainer = document.getElementById('chart-cont');
+        const uploadSection = document.getElementById('upload-container-id');
+        const playlistSection = document.getElementById('my-playlists-id');
+        const uploadnav = document.getElementById('upload-nav');
+        const playlistnav = document.getElementById('playlists-nav');
+        const songs = await getChart();
+
+       firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser){
+                uploadSection.classList.remove('hide');
+                playlistSection.classList.remove('hide');
+                uploadnav.classList.remove('hide');
+                playlistnav.classList.remove('hide');
+            }else{
+                uploadSection.classList.add('hide');
+                playlistSection.classList.add('hide');
+                uploadnav.classList.add('hide');
+                playlistnav.classList.add('hide');
+            }
+        });
+
+
+
+        function renderPlaylists(){
+          if (songs){
+            var i = 1;
+            songs.forEach(function(song){
+              let songLI = document.createElement('LI');
+              songLI.className = 'song-item';
+              songLI.innerHTML = `<p class="chart-position-text">${i}</p>
+                                    <div class="image-song-div">
+                                        <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
+                                            <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
+                                        </a>
+                                    </div>
+                                    <p class="song-name">${song.name}</p>
+                                    <a class="song-author" href="#">${song.author}</a>`;
+              chartContainer.appendChild(songLI);
+              i = i + 1;
+            });
+          }
+        }
+
+        renderPlaylists();
     }
 
 }
 
 export default Home;
+

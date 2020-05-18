@@ -8,6 +8,7 @@
   color: var(--backgroundLightColor);
   background: linear-gradient(to right, var(--backgroundLightColor), var(--backgroundLightColor)) no-repeat;
   background-size: 0% 100%;
+  margin: auto;
 }
 .btn-animated:hover {
   background-size: 100% 100%;
@@ -46,7 +47,7 @@
   color: var(--color6);
   text-align: center;
   border-color: var(--primaryColor);
-  background-color: none;
+  background-color: #fff;
 }
 .btn-light-red:hover {
   /*TODO find pretty color*/
