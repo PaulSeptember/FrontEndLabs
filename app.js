@@ -6,6 +6,7 @@ import PostShow     from './views/pages/PostShow.js'
 import Register     from './views/pages/Register.js'
 import Login        from './views/pages/Login.js'
 import Search       from './views/pages/Search.js'
+import Artist       from './views/pages/Artist.js'
 
 //import Login        from './views/pages/Login.js'
 import Upload       from './views/pages/Upload.js'
@@ -20,10 +21,12 @@ import Utils        from './services/Utils.js'
 const routes = {
     '/'                     : Home
     , '/playlist/:id'       : PostShow
+    , '/artist/:id'         : Artist
     , '/register'           : Register
     , '/login'              : Login
     , '/upload'             : Upload
     , '/search/:id'         : Search
+    , '/search'            : Search
 };
 
 

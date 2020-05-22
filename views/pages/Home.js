@@ -1,8 +1,42 @@
 
 async function getChart(){
-  const snapshot = await firebase.database().ref('/chart_songs').once('value');
-  return snapshot.val();
+    const snapshot = await firebase.database().ref('/chart_songs').once('value');
+    return snapshot.val();
 }
+
+async function getPlaylistsChart(){
+    const snapshot = await firebase.database().ref('/chart_playlists').once('value');
+    return snapshot.val();
+}
+
+async function getArtistsChart(){
+    const snapshot = await firebase.database().ref('/chart_artists').once('value');
+    return snapshot.val();
+}
+
+
+async function getImageSong(id){
+    let ref= firebase.storage().ref();
+    const imgRef = ref.child("/song_pic/id" + id + ".png");
+    const downloadURL = await imgRef.getDownloadURL();
+    return downloadURL;
+}
+
+async function getImageArtist(id){
+    let ref= firebase.storage().ref();
+    const imgRef = ref.child("/artist_pic/id" + id + ".png");
+    const downloadURL = await imgRef.getDownloadURL();
+    return downloadURL;
+}
+
+async function getImagePlaylist(id){
+    let ref= firebase.storage().ref();
+    const imgRef = ref.child("/playlist_pic/id" + id + ".png");
+    const downloadURL = await imgRef.getDownloadURL();
+    return downloadURL;
+}
+
+
 
 
 let Home = {
@@ -31,7 +65,7 @@ let Home = {
                     <li class="playlist-list-item">
                         <div class="playlist-div">
                             <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
+                                <img id="fuck" class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
                                 <div class="playlist-middle-image">
                                     <img class="playlist-play-image" src="icon/Add.png" alt="Cover"/>
                                 </div>
@@ -60,22 +94,8 @@ let Home = {
         <section class="releases-container">
             <h2 class="sections-text" id="releases-title">New releases</h2>
             <div class="description-text">The most popular releases, albums and mixes </div>
-            <div class="playlists-div">
-                <ul class="playlists-list">
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-           
-                </ul>
+            <div id="releases-ul-div" class="playlists-div">
+                <ul class="playlists-list"></ul>
             </div>
         </section>
 
@@ -131,19 +151,7 @@ let Home = {
             <div class="description-text">
                 Most popular artitsts
             </div>
-            <ul class="artists-list">
-                <li class="artist-list-item">
-                    <div class="artist-image-div">
-                        <a class="artist-link-image" href="#">
-                            <img class="artist-image" src="images/AddPlaylist.png" alt="Cover"/>
-                            <div class="middle-artist">
-                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
-                            </div>
-                        </a>
-                    </div>
-                    <a class="artist-text" href="#">StephanF</a>
-                </li>
-            </ul>
+            <ul id="artist-list-id" class="artists-list"></ul>
         </section>
         
         <section id="upload-container-id" class="upload-container hide">
@@ -162,10 +170,14 @@ let Home = {
         const playlistSection = document.getElementById('my-playlists-id');
         const uploadnav = document.getElementById('upload-nav');
         const playlistnav = document.getElementById('playlists-nav');
+        const releasesList = document.getElementById('releases-ul-div');
+        const artistList = document.getElementById('artist-list-id');
         const songs = await getChart();
-
-       firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser){
+        const playlists = await getPlaylistsChart();
+        const artists = await getArtistsChart();
+       
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+            if (firebaseUser){
                 uploadSection.classList.remove('hide');
                 playlistSection.classList.remove('hide');
                 uploadnav.classList.remove('hide');
@@ -178,29 +190,92 @@ let Home = {
             }
         });
 
+        if (songs){
+            let i = 1;
+            songs.forEach(async function(songRef){
+                const songId = songRef.id;
+                const snapshot = await firebase.database().ref('/songs/' + songId).once('value');//.once('value');
+                const song = snapshot.val();
 
-
-        function renderPlaylists(){
-          if (songs){
-            var i = 1;
-            songs.forEach(function(song){
-              let songLI = document.createElement('LI');
-              songLI.className = 'song-item';
-              songLI.innerHTML = `<p class="chart-position-text">${i}</p>
-                                    <div class="image-song-div">
-                                        <a class="image-song-a" href="#"><img class="image-song" src="images/AddPlaylist.png" alt="Cover"/>
-                                            <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                                        </a>
-                                    </div>
-                                    <p class="song-name">${song.name}</p>
-                                    <a class="song-author" href="#">${song.author}</a>`;
-              chartContainer.appendChild(songLI);
-              i = i + 1;
+                const picUrl = await getImageSong(song.pic_id);//song.pic_id);
+                let songLI = document.createElement('LI');
+                songLI.className = 'song-item';
+                songLI.innerHTML = `
+                                            <div class="image-song-div">
+                                                <a class="image-song-a" href="#"><img class="image-song" src=${picUrl} alt="Cover"/>
+                                                    <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
+                                                </a>
+                                            </div>
+                                            <p class="song-name">${song.name}</p>
+                                            <a class="song-author" href="/#/artist/${encodeURIComponent(song.author)}">${song.author}</a>`;
+                chartContainer.appendChild(songLI);
+            
+                i = i + 1;
             });
-          }
         }
 
-        renderPlaylists();
+        if (playlists){
+            playlists.forEach(async function(playlistRef){
+                const playlistId = playlistRef.id;
+                const snapshot = await firebase.database().ref('/playlists/' + playlistId).once('value');//.once('value');
+                const playlist = snapshot.val();
+                //TODO: nor pic
+                const picUrl = await getImagePlaylist(playlist.pic_id);//playlist.pic_id);
+                let playlistLI = document.createElement('LI');
+                playlistLI.className = 'playlist-list-item';
+                playlistLI.innerHTML = `
+                    <div class="playlist-div">
+                            <a href="/#/playlist/${playlistId}">
+                                <img class="add-playlist-image" src=${picUrl} alt="Cover"></img>
+                                <div class="playlist-middle-image">
+                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
+                                </div>
+                            </a>
+                        </div> 
+                        <a class="playlist-name-link" href="/#/playlist/${playlistId}">${playlist.name}</a>
+                        <p class="playlist-description">${playlist.desc}</p>
+                `;
+                releasesList.appendChild(playlistLI);
+            });
+        }
+
+
+        /*
+            <li class="artist-list-item">
+                    <div class="artist-image-div">
+                        <a class="artist-link-image" href="#">
+                            <img class="artist-image" src="images/AddPlaylist.png" alt="Cover"/>
+                            <div class="middle-artist">
+                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="artist-text" href="#">StephanF</a>
+                </li>
+        */
+
+        if (artists){
+            artists.forEach(async function(artistRef){
+                const snapshot = await firebase.database().ref('/artists/' + artistRef.id).once('value');//.once('value');
+                const artist = snapshot.val();
+                 const picUrl = await getImageArtist(artist.pic_id);
+                 let artistLI = document.createElement('LI');
+                 artistLI.className = 'artist-list-item';
+                 artistLI.innerHTML = `
+                    <div class="artist-image-div">
+                        <a class="artist-link-image" href="/#/">
+                            <img class="artist-image" src=${picUrl} alt="Cover"/>
+                            <div class="middle-artist">
+                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="artist-text" href="/#/artist/${encodeURIComponent(artist.name)}">${artist.name}</a>
+                 `
+                 artistList.appendChild(artistLI);
+            });
+        }
+        
     }
 
 }

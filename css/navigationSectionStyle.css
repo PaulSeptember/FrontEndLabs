@@ -143,6 +143,8 @@
 
 .playlists-div {	
 	margin-top: 2%;
+	display: flex;
+	flex-flow: wrap;
 }
 
 .playlists-list{
@@ -246,6 +248,7 @@
 	height: 2.5em;
 	width: 2.5em;
 	transition: .25s ease;
+	border-radius: 2px;
 }
 
 .middle {
@@ -314,6 +317,10 @@
 
 .genre-selector-div{
 	height: 40px;
+	margin-top: 20px;
+}
+
+#upload-second-p{
 	margin-top: 20px;
 }
 
