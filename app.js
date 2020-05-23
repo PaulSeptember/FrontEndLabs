@@ -2,13 +2,13 @@
 
 import Home         from './views/pages/Home.js'
 import Error404     from './views/pages/Error404.js'
-import PostShow     from './views/pages/PostShow.js'
+//import PostShow     from './views/pages/PostShow.js'
 import Register     from './views/pages/Register.js'
 import Login        from './views/pages/Login.js'
 import Search       from './views/pages/Search.js'
 import Artist       from './views/pages/Artist.js'
 
-//import Login        from './views/pages/Login.js'
+import Playlist     from './views/pages/Playlist.js'
 import Upload       from './views/pages/Upload.js'
 import Navbar       from './views/components/Navbar.js'
 import Bottombar    from './views/components/Bottombar.js' 
@@ -20,7 +20,7 @@ import Utils        from './services/Utils.js'
 
 const routes = {
     '/'                     : Home
-    , '/playlist/:id'       : PostShow
+    , '/playlist/:id'       : Playlist
     , '/artist/:id'         : Artist
     , '/register'           : Register
     , '/login'              : Login

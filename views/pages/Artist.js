@@ -65,14 +65,12 @@ let Artist = {
         });
         h2.innerHTML = artistRealName;
         pic.src = picUrl1;
-        //h2.innerHTML = query;
         const searchContainer = document.getElementById('search-results-ol');
 
         snapshot = await firebase.database().ref('/songs');
         snapshot.on("value", async function(snapshot) {
             let songsList = snapshot.val();
             songsList.forEach(async function(itemRef){
-                // console.log(query.toLowerCase);
                 if (itemRef.author.toLowerCase().includes(query.toLowerCase())){
                     const picUrl = await getImageSong(itemRef.pic_id);
                     let songLI = document.createElement('LI');

@@ -76,7 +76,7 @@ let Upload = {
         return view
     }
     , after_render: async () => {
-        console.log("sosoi");
+        //console.log("sosoi");
         
         const fileButton = document.getElementById('upload-file-button');
         const pictureButton = document.getElementById('upload-image-button');

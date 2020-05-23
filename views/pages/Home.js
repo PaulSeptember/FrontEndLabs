@@ -56,8 +56,9 @@ let Home = {
                 <a id="upload-nav" class="navigation-ref hide" href="#artitsts-title">Upload</a>
             </div>
         </nav>
-        
-        <section id="my-playlists-id" class="playlist-container hide">
+
+        <div id="my-playlists-id" class = "hide">
+        <section class="playlist-container">
             <h2 class="sections-text" id="playlists-title">Your playlists</h2>
             <p class="description-text">Create your own playlists</p>
             <div class="playlists-div">
@@ -90,6 +91,7 @@ let Home = {
                 </ul>
             </div>
         </section>
+        </div>
             
         <section class="releases-container">
             <h2 class="sections-text" id="releases-title">New releases</h2>
@@ -153,12 +155,13 @@ let Home = {
             </div>
             <ul id="artist-list-id" class="artists-list"></ul>
         </section>
-        
-        <section id="upload-container-id" class="upload-container hide">
+        <div id="upload-container-id" class="hide">
+        <section class="upload-container">
             <h2 class="sections-text" id="genres-title">Upload</h2>
             <div class="description-text">Did not find what you want? Fine. Upload any song you want...</div>
             <a href="/#/upload" id="upload-main-button" class="btn-red">Upload</a>
         </section>
+        </div>
     </main>   
         `
         return view

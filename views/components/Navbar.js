@@ -40,8 +40,6 @@ let Navbar = {
                 div_or.classList.add('hide');
                 log_out_btn.classList.remove('hide');
                 nick_name_p.classList.remove('hide');
-                //console.log(firebaseUser.uid);
-                //console.log(firebaseUser.email);
                 nick_name_p.innerHTML="Logged as " + firebaseUser.email; 
             }else{
                 log_in_link.classList.remove('hide');
@@ -55,11 +53,8 @@ let Navbar = {
 
         const searchInput = document.getElementById("header-search-input");
         searchInput.addEventListener("keyup", function(event) {
-            // Number 13 is the "Enter" key on the keyboard
             if (event.keyCode === 13) {
-            // Cancel the default action, if needed
             event.preventDefault();
-            // Trigger the button element with a click
             document.location.href = "/#/search/" + searchInput.value;
         }
 }); 
