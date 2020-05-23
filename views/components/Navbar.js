@@ -54,10 +54,10 @@ let Navbar = {
         const searchInput = document.getElementById("header-search-input");
         searchInput.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
-            event.preventDefault();
-            document.location.href = "/#/search/" + searchInput.value;
-        }
-}); 
+                event.preventDefault();
+                document.location.href = "/#/search/" + searchInput.value;
+            }
+        }); 
     }
 
 }

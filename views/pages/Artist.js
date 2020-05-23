@@ -1,28 +1,5 @@
 import Utils        from './../../services/Utils.js'
-
-async function getSongs(){
-    const snapshot = await firebase.database().ref('/songs');
-    return snapshot;
-}
-
-async function getArtists(){
-    const snapshot = await firebase.database().ref('/artists');
-    return snapshot;
-}
-
-async function getImageSong(id){
-    let ref= firebase.storage().ref();
-    const imgRef = ref.child("/song_pic/id" + id + ".png");
-    const downloadURL = await imgRef.getDownloadURL();
-    return downloadURL;
-}
-
-async function getImageArtist(id){
-    let ref= firebase.storage().ref();
-    const imgRef = ref.child("/artist_pic/id" + id + ".png");
-    const downloadURL = await imgRef.getDownloadURL();
-    return downloadURL;
-}
+import * as DBGet from './../../services/DBGet.js'
 
 let Artist = {
     render : async () => {
@@ -49,7 +26,8 @@ let Artist = {
         const pic = document.getElementById('img-artist-on-page');
 
         let artistRealName = query;
-        let picUrl1 = await getImageArtist("a0");
+        let picUrl = await DBGet.getImageArtist("a0");
+        pic.src = picUrl;
         
         let snapshot = await firebase.database().ref('/artists');
         snapshot.on("value", async function(snapshot) {
@@ -57,22 +35,20 @@ let Artist = {
             artistsList.forEach(async function(artist){
                 console.log(artist.name.toLowerCase());
                 if (artist.name.toLowerCase() === query.toLowerCase()){
-                    artistRealName = artist.name;
-                    let picUrl1 = await getImageArtist(artist.pic_id);
+                    h2.innerHTML = artist.name;
+                    let picUrl1 = await DBGet.getImageArtist(artist.pic_id);
                     pic.src = picUrl1;
                 }
             });
         });
-        h2.innerHTML = artistRealName;
-        pic.src = picUrl1;
+       
         const searchContainer = document.getElementById('search-results-ol');
-
         snapshot = await firebase.database().ref('/songs');
         snapshot.on("value", async function(snapshot) {
             let songsList = snapshot.val();
             songsList.forEach(async function(itemRef){
                 if (itemRef.author.toLowerCase().includes(query.toLowerCase())){
-                    const picUrl = await getImageSong(itemRef.pic_id);
+                    const picUrl = await DBGet.getImageSong(itemRef.pic_id);
                     let songLI = document.createElement('LI');
                     songLI.className = 'playlist-song-item';
                     songLI.innerHTML = `<div class="song-div">

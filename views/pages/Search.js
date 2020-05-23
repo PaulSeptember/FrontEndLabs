@@ -1,16 +1,5 @@
-import Utils        from './../../services/Utils.js'
-
-async function getSongs(){
-    const snapshot = await firebase.database().ref('/songs');
-    return snapshot;
-}
-
-async function getImageSong(id){
-    let ref= firebase.storage().ref();
-    const imgRef = ref.child("/song_pic/id" + id + ".png");
-    const downloadURL = await imgRef.getDownloadURL();
-    return downloadURL;
-}
+import Utils   from './../../services/Utils.js'
+import * as DBGet from './../../services/DBGet.js'
 
 let Search = {
     render : async () => {
@@ -39,7 +28,7 @@ let Search = {
             let songsList = snapshot.val();
             songsList.forEach(async function(itemRef){
                 if (itemRef.name.toLowerCase().includes(query) || itemRef.author.toLowerCase().includes(query)){
-                    const picUrl = await getImageSong(itemRef.pic_id);
+                    const picUrl = await DBGet.getImageSong(itemRef.pic_id);
                     let songLI = document.createElement('LI');
                     songLI.className = 'playlist-song-item';
                     songLI.innerHTML = `<div class="song-div">

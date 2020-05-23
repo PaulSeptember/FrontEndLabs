@@ -3,7 +3,7 @@ html {
 }
 
 .hide{
-  visibility: collapse;
+  /*visibility: collapse;*/
   display: none;
 }
 

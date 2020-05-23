@@ -1,28 +1,5 @@
 import Utils        from './../../services/Utils.js'
-
-async function getSongs(){
-    const snapshot = await firebase.database().ref('/songs');
-    return snapshot;
-}
-
-async function getArtists(){
-    const snapshot = await firebase.database().ref('/artists');
-    return snapshot;
-}
-
-async function getImageSong(id){
-    let ref= firebase.storage().ref();
-    const imgRef = ref.child("/song_pic/id" + id + ".png");
-    const downloadURL = await imgRef.getDownloadURL();
-    return downloadURL;
-}
-
-async function getImagePlaylist(id){
-    let ref= firebase.storage().ref();
-    const imgRef = ref.child("/playlist_pic/id" + id + ".png");
-    const downloadURL = await imgRef.getDownloadURL();
-    return downloadURL;
-}
+import * as DBGet from './../../services/DBGet.js'
 
 let Playlist = {
     render : async () => {
@@ -64,7 +41,7 @@ let Playlist = {
             let playlist = snapshot.val();
             h1.innerHTML = playlist.name;
             desc.innerHTML = playlist.desc;
-            let picUrl1 = await getImagePlaylist(playlist.pic_id);
+            let picUrl1 = await DBGet.getImagePlaylist(playlist.pic_id);
             pic.src = picUrl1;
         });
         
@@ -78,7 +55,7 @@ let Playlist = {
                 let songSnapshot = await firebase.database().ref('/songs/' + songId).once('value');
                 let song = songSnapshot.val();
                 
-                let picUrl2 = await getImageSong(song.pic_id); 
+                let picUrl2 = await DBGet.getImageSong(song.pic_id); 
 
                 let playlistLI = document.createElement('LI');
                 playlistLI.className = 'playlist-song-item';
