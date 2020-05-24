@@ -2,7 +2,6 @@ let Navbar = {
     render: async () => {
         let view =  /*html*/`
         <header class="header">
-            <p>TODO: genre search, new playlist, player, styles</p>
             <div id="header-left-part">
                 <a href="/#/" id="header-music-player-name">Yoptify</a>  
                 <input id="header-search-input" size="40" placeholder ="Search">
