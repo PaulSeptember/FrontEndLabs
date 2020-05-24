@@ -101,8 +101,6 @@ const routerWithoutPlayer = async () => {
 
 // Listen on page load:
 window.addEventListener('load', router);
-
-
 window.addEventListener('hashchange', routerWithoutPlayer);
 
 

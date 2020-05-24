@@ -7,14 +7,14 @@ let PlaylistNew = {
         <section class="playlist-page-section">
         <h1>Playlist editing</h1>
         <div class="playlist-head-div">
-            <div class="playlist-page-image-div">
-                <a href="#">
+            <div>
+                <div class="playlist-page-image-div">
                     <img id="img-playlist-on-page" class="playlist-page-image" src="" alt="Cover"></img>
-                    <div class="playlist-page-middle-image">
-                        <img class="playlist-page-play-image" src="NO" alt="Change cover"/>
-                    </div>
-                </a>
+                </div>
+                <input type="file" name="file" id="file" class="inputfile" />
+                <label class="picure-upload btn-red" for="file">Choose picture</label>
             </div>
+            
             <div class="playlist-page-info-div">  
                 <input id="playlist-name-input-id" class="playlists-edit-name">
                 <!--h1 id="playlist-name-id" class="playlist-page-name">Playlist_Name</h1-->

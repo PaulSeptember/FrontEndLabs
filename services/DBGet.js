@@ -71,3 +71,27 @@ export async function getPlaylists(){
     const snapshot = await firebase.database().ref('/playlists').once('value');
     return snapshot.val();
 }
+
+export async function pushPlaylist(user, list){
+    //TODO CLEAN SHIT FROM DB
+    const snapshot = await firebase.database().ref('/play_queue').once('value');
+    const queues = snapshot.val();
+    let findedUserId = 0;
+
+    for(let [index,queue] of queues.entries()){
+        if (!queue) continue;
+
+        if (queue.user == user){
+            findedUserId = index;
+            break;
+        }
+    }
+    console.log(findedUserId);
+
+    let i = 1;
+    for(let songId of list){
+        firebase.database().ref('/play_queue/' + findedUserId + '/songs_list/' + i + '/id').set(songId);
+        i = i + 1;
+    }
+    
+}

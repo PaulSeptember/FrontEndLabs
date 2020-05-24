@@ -10,13 +10,12 @@ let PlaylistEdit = {
         <section class="playlist-page-section">
         <h1>Playlist editing</h1>
         <div class="playlist-head-div">
-            <div class="playlist-page-image-div">
-                <a href="#">
+            <div>
+                <div class="playlist-page-image-div">
                     <img id="img-playlist-on-page" class="playlist-page-image" src="" alt="Cover"></img>
-                    <div class="playlist-page-middle-image">
-                        <img class="playlist-page-play-image" src="NO" alt="Change cover"/>
-                    </div>
-                </a>
+                </div>
+                <input type="file" name="file" id="file" class="inputfile" />
+                <label class="picure-upload btn-red" for="file">Choose picture</label>
             </div>
             <div class="playlist-page-info-div">  
                 <input id="playlist-name-input-id" class="playlists-edit-name">
@@ -103,9 +102,12 @@ let PlaylistEdit = {
                         playlistLI.innerHTML = `
                             <div class="song-div">
                                 <div class="image-song-div">
-                                    <a class="image-song-a" href="#"><img class="image-song" src=${picUrl2} alt="Cover"/>
-                                        <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                                    </a>
+                                    <button class="image-song-a" href="#">
+                                        <img class="image-song" src=${picUrl2} alt="Cover"/>
+                                        <div class="middle">
+                                            <img id="${songId}" class="song-play-image" src="icon/Play.png" alt="Cover"/>
+                                        </div>
+                                    </button>
                                 </div>
                                 <p class="song-name">${song.name}</p>
                                 <a class="song-author" href="/#/artist/${song.author}">${song.author}</a>
@@ -122,6 +124,7 @@ let PlaylistEdit = {
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
         }
 
         function pushSongId(id) {
@@ -172,9 +175,12 @@ let PlaylistEdit = {
                         songLI.id = index;
                         songLI.innerHTML = `<div class="song-div">
                                             <div class="image-song-div">
-                                                <a class="image-song-a" href="#"><img class="image-song" src=${picUrl} alt="Cover"/>
-                                                    <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                                                </a>
+                                                <button class="image-song-a" href="#">
+                                                <img class="image-song" src=${picUrl} alt="Cover"/>
+                                                    <div class="middle">
+                                                        <img id="${index}"class="song-play-image" src="icon/Play.png" alt="Cover"/>
+                                                    </div>
+                                                </button>
                                             </div>
                                         <p class="song-name">${itemRef.name}</p>
                                         <a class="song-author" href="/#/artist/${itemRef.author}">${itemRef.author}</a>
@@ -189,6 +195,28 @@ let PlaylistEdit = {
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+        });
+
+        songsContainer.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }
+                //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
+            }
+        });
+
+        searchContainer.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }
+                //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
+            }
         });
 
     }

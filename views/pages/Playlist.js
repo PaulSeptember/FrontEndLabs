@@ -80,9 +80,12 @@ let Playlist = {
                 playlistLI.innerHTML = `
                     <div class="song-div">
                         <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src=${picUrl2} alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
+                            <button class="image-song-a">
+                                <img class="image-song" src=${picUrl2} alt="Cover"/>
+                                <div class="middle">
+                                    <img id="${songId}" class="song-play-image" src="icon/Play.png" alt="Cover"/>
+                                </div>
+                            </button>
                         </div>
                         <p class="song-name">${song.name}</p>
                         <a class="song-author" href="/#/artist/${song.author}">${song.author}</a>
@@ -97,6 +100,19 @@ let Playlist = {
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
+
+        songsContainer.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }
+                //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
+            }
+        });
+
+
     }
 }
 

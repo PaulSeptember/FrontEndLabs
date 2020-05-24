@@ -130,6 +130,7 @@ let Home = {
         const artists = await DBGet.getArtistsChart();
         let user = "";
 
+        //await DBGet.pushPlaylist("test@mail.ru",[19,8]);
         //Player.songId = 20;
         //document.getElementById('player_container').contentWindow.initSong(0);
         //Player.newQueue([19]);
@@ -152,7 +153,8 @@ let Home = {
        
 
         const userPlaylists = document.getElementById('user-playlists');
-        if(playlists){
+        if(playlists && firebase.auth().currentUser){
+            //console.log(firebase.auth().currentUser);
             //playlists = playlists.reverse();
             for(let [index,playlist] of playlists.entries()){
                 if (!playlist)continue;
@@ -211,11 +213,8 @@ let Home = {
                 artistLI.className = 'artist-list-item';
                 artistLI.innerHTML = `
                     <div class="artist-image-div">
-                        <a class="artist-link-image" href="/#/">
+                        <a class="artist-link-image">
                             <img class="artist-image" src=${picUrl} alt="Cover"/>
-                            <div class="middle-artist">
-                                <img class="artist-play-button" src="icon/Play.png" alt="Cover"/>
-                            </div>
                         </a>
                     </div>
                     <a class="artist-text" href="/#/artist/${encodeURIComponent(artist.name)}">${artist.name}</a>
@@ -236,9 +235,12 @@ let Home = {
                 songLI.className = 'song-item';
                 songLI.innerHTML = `        <p class="chart-position-text">${i}</p>
                                             <div class="image-song-div">
-                                                <a class="image-song-a" href="#"><img class="image-song" src=${picUrl} alt="Cover"/>
-                                                    <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                                                </a>
+                                                <button class="image-song-a">
+                                                    <img class="image-song" src=${picUrl} alt="Cover"/>
+                                                    <div class="middle">
+                                                        <img id="${songId}" class="song-play-image" src="icon/Play.png" alt="Cover"/>
+                                                    </div>
+                                                </button>
                                             </div>
                                             <p class="song-name">${song.name}</p>
                                             <a class="song-author" href="/#/artist/${encodeURIComponent(song.author)}">${song.author}</a>`;
@@ -246,6 +248,18 @@ let Home = {
                 i = i + 1;
             };
         }
+
+        chartContainer.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }
+                //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
+            }
+        });
+
         
     }
 

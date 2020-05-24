@@ -73,8 +73,8 @@
 
 .playlist-page-image-div{
     position: relative;
-    width: 10em;
-    height: 10em;
+    width: 11em;
+    height: 11em;
 }
 
 .playlist-page-middle-image {
@@ -132,8 +132,8 @@
 }
 
 .image-song{
-    height: 2.5em;
-    width: 2.5em;
+    height: 2.7em;
+    width: 2.7em;
     transition: .25s ease;
 }
 
@@ -163,8 +163,8 @@
 }
 
 .song-play-image {
-  height: 2.5em;
-  width: 2.5em;
+  height: 2.7em;
+  width: 2.7em;
 }
 
 .chart-position-text{
@@ -223,4 +223,9 @@
     font-family: Montserrat;
     font-weight: 500;  
     border: 0 solid #000;
+}
+
+.picure-upload{
+    margin-top: 20px;
+    margin-left: 25px;
 }
