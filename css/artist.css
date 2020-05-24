@@ -1,0 +1,20 @@
+#artist-info-head{
+	display: flex;
+	flex-direction: row;
+	margin-top: 15px;
+}
+
+#section-artist-h2{
+	margin-top: 70px;
+	margin-left: 10px;
+}
+#section-artist-desc{
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.img-artist-page{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
