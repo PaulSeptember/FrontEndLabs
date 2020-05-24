@@ -54,3 +54,13 @@ export async function getPicId(){
   const snapshot = await firebase.database().ref('/song_pic_id/id').once('value');
   return snapshot.val();
 }
+
+export async function getPlaylistId(){
+  const snapshot = await firebase.database().ref('/playlist_id/id').once('value');
+  return snapshot.val();
+}
+
+export async function getPlaylists(){
+    const snapshot = await firebase.database().ref('/playlists').once('value');
+    return snapshot.val();
+}

@@ -2,7 +2,8 @@
 
 import Home         from './views/pages/Home.js'
 import Error404     from './views/pages/Error404.js'
-//import PostShow     from './views/pages/PostShow.js'
+import PlaylistEdit from './views/pages/PlaylistEdit.js'
+import PlaylistNew  from './views/pages/PlaylistNew.js'
 import Register     from './views/pages/Register.js'
 import Login        from './views/pages/Login.js'
 import Search       from './views/pages/Search.js'
@@ -26,7 +27,9 @@ const routes = {
     , '/login'              : Login
     , '/upload'             : Upload
     , '/search/:id'         : Search
-    , '/search'            : Search
+    , '/search'             : Search
+    , '/playlistedit/:id'   : PlaylistEdit
+    , '/playlistnew'        : PlaylistNew
 };
 
 

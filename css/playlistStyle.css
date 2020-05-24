@@ -10,12 +10,42 @@
     min-height: 80vh;
 }
 
+#playlist-edit-button{
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.duration-div{
+    display: flex;
+    flex-direction: row;
+}
+
+#playlist-delete-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#playlist-save-button{
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
 .playlist-page-info-div{
     margin: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .playlist-page-description{
     margin-top: 10px;
+}
+
+.playlist-page-author{
+    margin-top: 60px;
 }
 
 .playlist-duration{
@@ -32,6 +62,7 @@
 .playlist-head-div{
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .playlist-page-image {
@@ -160,4 +191,36 @@
 
 .duration{
     margin: 12px 10px;
+}
+
+#playlist-search-input{
+    /*margin-left: 20px;*/
+    margin-top: 3px;
+    height: 2.5em;
+    border: 2px solid #000;
+    background-color: var(--backgroundLightColor);
+    color: #000;
+    transition: width 0.75s;
+    width: 97%;
+    border-radius: 30px;
+    padding-left: 12px;
+}
+
+.playlists-edit-name{
+    color: #000;
+    background-color: var(--backgroundLightColor);
+    font-size: 2em;
+    font-family: Montserrat;
+    font-weight: 600;  
+    border: 0 solid #000;
+}
+
+.playlists-edit-description{
+    color: #000;
+    background-color: var(--backgroundLightColor);
+    margin-top: 10px;
+    font-size: 1em;
+    font-family: Montserrat;
+    font-weight: 500;  
+    border: 0 solid #000;
 }

@@ -23,32 +23,18 @@ let Home = {
             <h2 class="sections-text" id="playlists-title">Your playlists</h2>
             <p class="description-text">Create your own playlists</p>
             <div class="playlists-div">
-                <ul class="playlists-list">
+                <ul id="user-playlists" class="playlists-list">
                     <li class="playlist-list-item">
                         <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
+                            <a id="new-playlist-link" href="/#/playlistnew">
+                                <img class="add-playlist-image" src="icon/Add.png" alt="Cover"></img>
                                 <div class="playlist-middle-image">
                                     <img class="playlist-play-image" src="icon/Add.png" alt="Cover"/>
                                 </div>
                             </a>
                         </div> 
-                        <p class="playlist-name-link" href="playlist.html">New playlist</p>
+                        <p class="playlist-name">New playlist</p>
                     </li>
-
-                    <li class="playlist-list-item">
-                        <div class="playlist-div">
-                            <a href="#">
-                                <img class="add-playlist-image" src="images/AddPlaylist.png" alt="Cover"></img>
-                                <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
-                                </div>
-                            </a>
-                        </div> 
-                        <a class="playlist-name-link" href="playlist.html">Playlist_Name</a>
-                        <p class="playlist-description">Playlist_Description</p>
-                    </li>
-                    
                 </ul>
             </div>
         </section>
@@ -137,15 +123,19 @@ let Home = {
         const releasesList = document.getElementById('releases-ul-div');
         const artistList = document.getElementById('artist-list-id');
         const songs = await DBGet.getChart();
-        const playlists = await DBGet.getPlaylistsChart();
+        const playlistsChart = await DBGet.getPlaylistsChart();
+        let playlists = await DBGet.getPlaylists();
         const artists = await DBGet.getArtistsChart();
-       
+        let user = "";
+
+
         firebase.auth().onAuthStateChanged(firebaseUser => {
             if (firebaseUser){
                 uploadSection.classList.remove('hide');
                 playlistSection.classList.remove('hide');
                 uploadnav.classList.remove('hide');
                 playlistnav.classList.remove('hide');
+                user = firebaseUser.email;
             }else{
                 uploadSection.classList.add('hide');
                 playlistSection.classList.add('hide');
@@ -154,31 +144,36 @@ let Home = {
             }
         });
 
-        if (songs){
-            let i = 1;
-            for(const songRef of songs){
-                if(!songRef)continue;
-                const songId = songRef.id;
-                const snapshot = await firebase.database().ref('/songs/' + songId).once('value');
-                const song = snapshot.val();
-                const picUrl = await DBGet.getImageSong(song.pic_id);
-                let songLI = document.createElement('LI');
-                songLI.className = 'song-item';
-                songLI.innerHTML = `        <p class="chart-position-text">${i}</p>
-                                            <div class="image-song-div">
-                                                <a class="image-song-a" href="#"><img class="image-song" src=${picUrl} alt="Cover"/>
-                                                    <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                                                </a>
-                                            </div>
-                                            <p class="song-name">${song.name}</p>
-                                            <a class="song-author" href="/#/artist/${encodeURIComponent(song.author)}">${song.author}</a>`;
-                chartContainer.appendChild(songLI);
-                i = i + 1;
-            };
+       
+
+        const userPlaylists = document.getElementById('user-playlists');
+        if(playlists){
+            //playlists = playlists.reverse();
+            for(let [index,playlist] of playlists.entries()){
+                if (!playlist)continue;
+                if (playlist.created != firebase.auth().currentUser.email)continue;
+                console.log(index);
+                const picUrl = await DBGet.getImagePlaylist(playlist.pic_id);
+                let playlistLI = document.createElement('LI');
+                playlistLI.className = 'playlist-list-item';
+                playlistLI.innerHTML = `
+                            <div class="playlist-div">
+                                    <a href="/#/playlist/${index}">
+                                        <img class="add-playlist-image" src=${picUrl} alt="Cover"></img>
+                                        <div class="playlist-middle-image">
+                                            <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <a class="playlist-name-link" href="/#/playlist/${index}">${playlist.name}</a>
+                                <p class="playlist-description">${playlist.desc}</p>
+                        `;
+                userPlaylists.appendChild(playlistLI);
+            }
         }
 
-        if (playlists){
-            playlists.forEach(async function(playlistRef){
+        if (playlistsChart){
+            playlistsChart.forEach(async function(playlistRef){
                 const playlistId = playlistRef.id;
                 const snapshot = await firebase.database().ref('/playlists/' + playlistId).once('value');
                 const playlist = snapshot.val();
@@ -222,6 +217,29 @@ let Home = {
                  `
                  artistList.appendChild(artistLI);
             });
+        }
+
+        if (songs){
+            let i = 1;
+            for(const songRef of songs){
+                if(!songRef)continue;
+                const songId = songRef.id;
+                const snapshot = await firebase.database().ref('/songs/' + songId).once('value');
+                const song = snapshot.val();
+                const picUrl = await DBGet.getImageSong(song.pic_id);
+                let songLI = document.createElement('LI');
+                songLI.className = 'song-item';
+                songLI.innerHTML = `        <p class="chart-position-text">${i}</p>
+                                            <div class="image-song-div">
+                                                <a class="image-song-a" href="#"><img class="image-song" src=${picUrl} alt="Cover"/>
+                                                    <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
+                                                </a>
+                                            </div>
+                                            <p class="song-name">${song.name}</p>
+                                            <a class="song-author" href="/#/artist/${encodeURIComponent(song.author)}">${song.author}</a>`;
+                chartContainer.appendChild(songLI);
+                i = i + 1;
+            };
         }
         
     }

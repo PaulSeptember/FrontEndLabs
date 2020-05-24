@@ -25,6 +25,12 @@
 	font-family: Montserrat;
 }
 
+.playlist-page-author{
+    font-size: 0.9em;
+	font-family: Montserrat;
+	color: #666;
+}
+
 .playlist-duration{
 	font-size: 1em;
 	font-family: Montserrat;
