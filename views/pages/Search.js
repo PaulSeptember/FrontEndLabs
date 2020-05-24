@@ -5,7 +5,7 @@ import * as DBGet from './../../services/DBGet.js'
 let Search = {
     render : async () => {
         let request = Utils.parseRequestURL()
-        let query = request.id;
+        let query = decodeURIComponent(request.id);
         
         return /*html*/`
             <section class = "search-results-section">
@@ -18,7 +18,7 @@ let Search = {
     }
     , after_render: async () => {
         let request = Utils.parseRequestURL()
-        let query = request.id;
+        let query = decodeURIComponent(request.id);
         const h2 =  document.getElementById('section-search-h2');
 
         h2.innerHTML = "Search results for "+query;

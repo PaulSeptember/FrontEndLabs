@@ -229,3 +229,9 @@
     margin-top: 20px;
     margin-left: 25px;
 }
+
+.playlist-edit-title{
+    margin: 10px;
+    font-size: 2em;
+    font-family: Montserrat;
+}

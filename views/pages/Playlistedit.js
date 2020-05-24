@@ -8,14 +8,14 @@ let PlaylistEdit = {
         
         return /*html*/`
         <section class="playlist-page-section">
-        <h1>Playlist editing</h1>
+        <h1 class="playlist-edit-title">Playlist editing</h1>
         <div class="playlist-head-div">
             <div>
                 <div class="playlist-page-image-div">
                     <img id="img-playlist-on-page" class="playlist-page-image" src="" alt="Cover"></img>
                 </div>
-                <input type="file" name="file" id="file" class="inputfile" />
-                <label class="picure-upload btn-red" for="file">Choose picture</label>
+                <input type="file" name="file" accept=".png" value="upload" id="upload-file-button" />
+                <label class="picure-upload btn-red" for="upload-file-button">Choose picture</label>
             </div>
             <div class="playlist-page-info-div">  
                 <input id="playlist-name-input-id" class="playlists-edit-name">
@@ -33,7 +33,7 @@ let PlaylistEdit = {
     </section>
 
     <section class = "search-results-section">
-        <h2 id="section-search-h2" class="sections-text" id="genres-title">Song search</h2>
+        <h2 id="section-search-h2" class="sections-text" id="genres-title">Search songs to add...</h2>
         <input id="playlist-search-input" size="40" placeholder ="Search">
         <ul id="search-results-ol" class="playlist-ol"></ul> 
     </section>
@@ -51,6 +51,7 @@ let PlaylistEdit = {
         const searchInput = document.getElementById('playlist-search-input');
         const saveButton = document.getElementById('playlist-save-button');
         const deleteButton = document.getElementById('playlist-delete-button');
+        const uploadPic = document.getElementById('upload-file-button');
 
         let createdBy;
         let snapshot = await firebase.database().ref('/playlists/' + playlistId);
@@ -113,7 +114,7 @@ let PlaylistEdit = {
                                 <a class="song-author" href="/#/artist/${song.author}">${song.author}</a>
                             </div>
                             <div class="duration-div">
-                                <button id="${index}">X</button>
+                                <button class="btn-red" id="${index}">X</button>
                                 <p class="duration">2:22</p>
                             </div>
                         `;
@@ -217,6 +218,19 @@ let PlaylistEdit = {
                 }
                 //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
             }
+        });
+
+
+        uploadPic.addEventListener('change', async (event) => {
+            let file = event.target.files[0];
+
+            let storageRef = firebase.storage().ref('playlist_pic/idp' + playlistId + '.png');
+            await storageRef.put(file);
+
+            firebase.database().ref('/playlists/' + playlistId + '/pic_id').set("p" + playlistId);
+
+            let picUrl1 = await DBGet.getImagePlaylist("p" + playlistId);
+            pic.src = picUrl1;
         });
 
     }

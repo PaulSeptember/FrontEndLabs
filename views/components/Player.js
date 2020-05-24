@@ -92,7 +92,7 @@ let Player = {
         }
 
         async function getSong(){
-            player.src = await DBGet.getSongMP3(songsQueue[currentSong]);
+            //player.src = await DBGet.getSongMP3(songsQueue[currentSong]);
             let songId = songsQueue[currentSong];
             let songSnapshot = await firebase.database().ref('/songs/' + songId).once('value');
             let song = songSnapshot.val();
