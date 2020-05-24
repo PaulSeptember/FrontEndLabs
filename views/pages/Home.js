@@ -1,4 +1,5 @@
 import * as DBGet from './../../services/DBGet.js'
+//import * as Player from './../../services/Player.js'
 
 let Home = {
     render : async () => {
@@ -115,6 +116,7 @@ let Home = {
 
     }
     , after_render: async () => {
+        //console.log( firebase.auth().currentUser.email);
         const chartContainer = document.getElementById('chart-cont');
         const uploadSection = document.getElementById('upload-container-id');
         const playlistSection = document.getElementById('my-playlists-id');
@@ -128,6 +130,9 @@ let Home = {
         const artists = await DBGet.getArtistsChart();
         let user = "";
 
+        //Player.songId = 20;
+        //document.getElementById('player_container').contentWindow.initSong(0);
+        //Player.newQueue([19]);
 
         firebase.auth().onAuthStateChanged(firebaseUser => {
             if (firebaseUser){
@@ -152,13 +157,13 @@ let Home = {
             for(let [index,playlist] of playlists.entries()){
                 if (!playlist)continue;
                 if (playlist.created != firebase.auth().currentUser.email)continue;
-                console.log(index);
+                //console.log(index);
                 const picUrl = await DBGet.getImagePlaylist(playlist.pic_id);
                 let playlistLI = document.createElement('LI');
                 playlistLI.className = 'playlist-list-item';
                 playlistLI.innerHTML = `
                             <div class="playlist-div">
-                                    <a href="/#/playlist/${index}">
+                                    <a href="#/playlist/${index}">
                                         <img class="add-playlist-image" src=${picUrl} alt="Cover"></img>
                                         <div class="playlist-middle-image">
                                             <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
@@ -198,7 +203,7 @@ let Home = {
 
         if (artists){
             artists.forEach(async function(artistRef){ //КАКОГО Х ОН СИНХРОННЫЙ И НЕ ЖДЕТ AWAIT ????!??!? 
-                console.log(artistRef);
+                //console.log(artistRef);
                 const snapshot = await firebase.database().ref('/artists/' + artistRef.id).once('value');
                 const artist = snapshot.val();
                 const picUrl = await DBGet.getImageArtist(artist.pic_id);

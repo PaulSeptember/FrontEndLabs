@@ -1,6 +1,7 @@
 import Utils   from './../../services/Utils.js'
 import * as DBGet from './../../services/DBGet.js'
 
+
 let Search = {
     render : async () => {
         let request = Utils.parseRequestURL()

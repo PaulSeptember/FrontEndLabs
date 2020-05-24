@@ -44,6 +44,13 @@ export async function getImagePlaylist(id){
     return downloadURL;
 }
 
+export async function getSongMP3(id){
+    let ref= firebase.storage().ref();
+    const imgRef = ref.child("/mp3/id" + id + ".mp3");
+    const downloadURL = await imgRef.getDownloadURL();
+    return downloadURL;
+}
+
 export async function getSongId(){
   const snapshot = await firebase.database().ref('/song_id/id').once('value');
   return snapshot.val();
