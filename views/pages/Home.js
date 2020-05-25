@@ -116,6 +116,7 @@ let Home = {
 
     }
     , after_render: async () => {
+        console.log(await DBGet.getPlaylistList(13));
         //console.log( firebase.auth().currentUser.email);
         const chartContainer = document.getElementById('chart-cont');
         const uploadSection = document.getElementById('upload-container-id');
@@ -165,12 +166,12 @@ let Home = {
                 playlistLI.className = 'playlist-list-item';
                 playlistLI.innerHTML = `
                             <div class="playlist-div">
-                                    <a href="#/playlist/${index}">
+                                    <button class="playlist-play">
                                         <img class="add-playlist-image" src=${picUrl} alt="Cover"></img>
                                         <div class="playlist-middle-image">
-                                            <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
+                                            <img id="${index}" class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
                                         </div>
-                                    </a>
+                                    </button>
                                 </div> 
                                 <a class="playlist-name-link" href="/#/playlist/${index}">${playlist.name}</a>
                                 <p class="playlist-description">${playlist.desc}</p>
@@ -189,12 +190,12 @@ let Home = {
                 playlistLI.className = 'playlist-list-item';
                 playlistLI.innerHTML = `
                     <div class="playlist-div">
-                            <a href="/#/playlist/${playlistId}">
+                            <button class="playlist-play">
                                 <img class="add-playlist-image" src=${picUrl} alt="Cover"></img>
                                 <div class="playlist-middle-image">
-                                    <img class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
+                                    <img id="${playlistId}" class="playlist-play-image" src="icon/Play.png" alt="Cover"/>
                                 </div>
-                            </a>
+                            </button>
                         </div> 
                         <a class="playlist-name-link" href="/#/playlist/${playlistId}">${playlist.name}</a>
                         <p class="playlist-description">${playlist.desc}</p>
@@ -256,7 +257,29 @@ let Home = {
                 if (firebase.auth().currentUser){
                     DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
                 }
-                //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
+            }
+        });
+
+        releasesList.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    let list = await DBGet.getPlaylistList(e.target.id);
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, list);
+                }
+            }
+        });
+
+
+        userPlaylists.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    let list = await DBGet.getPlaylistList(e.target.id);
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, list);
+                }
             }
         });
 

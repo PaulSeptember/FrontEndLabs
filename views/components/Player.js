@@ -56,11 +56,12 @@ let Player = {
         const authorP = document.getElementById('player-author-p');
         const section = document.getElementById('player-section');
 
+        let first = true;
         let currentSong  = 0;
         let currentUser;
         let songsQueue = [];
 
-        async function getPlaylist(isPlay){
+        async function getPlaylist(){
             console.log('started loading');
             let snapshot = await firebase.database().ref('/play_queue');
             snapshot.on("value", async function(snapshot) {
@@ -82,17 +83,28 @@ let Player = {
                             console.log(song.id);
                             songsQueue.push(song.id);
                         }
+                        console.log(songsQueue.length);
+                        if (first && songsQueue.length == 0){
+                            section.classList.add("hide");
+                        }else{
+                            section.classList.remove("hide");
+                        }
+
                         currentSong = 0;
-                        await getSong(isPlay);
+                        await getSong();
                         break;
                     }
                 }
-                play();
+                console.log(first);
+                if (!first){
+                    play();
+                }
+                first = false;
             });
         }
 
         async function getSong(){
-            //player.src = await DBGet.getSongMP3(songsQueue[currentSong]);
+            player.src = await DBGet.getSongMP3(songsQueue[currentSong]);
             let songId = songsQueue[currentSong];
             let songSnapshot = await firebase.database().ref('/songs/' + songId).once('value');
             let song = songSnapshot.val();
@@ -104,10 +116,13 @@ let Player = {
        
         firebase.auth().onAuthStateChanged(async firebaseUser => {
             if (firebaseUser){
+                //console.log("tut true");
+                first = true;
                 currentUser = firebase.auth().currentUser.email;
-                await getPlaylist(false);   
+                await getPlaylist();   
                 section.classList.remove("hide");
             }else{
+                pause();
                 section.classList.add("hide");
                 console.log('not cool((');
             }

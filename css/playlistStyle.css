@@ -71,6 +71,14 @@
     margin-bottom: 5px;
 }
 
+.playlist-page-play{
+    background: transparent;
+    border: 0 solid #000;
+    font-size: 16px;
+    width: 10em;
+    height: 10em;
+}
+
 .playlist-page-image-div{
     position: relative;
     width: 11em;
@@ -81,8 +89,8 @@
     opacity: 0;
     transition: .25s ease;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 45%;
+    left: 45%;
     transform: translate(-50%, -50%);
     text-align: center;
 }

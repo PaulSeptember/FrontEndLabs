@@ -56,6 +56,11 @@ export async function getSongId(){
   return snapshot.val();
 }
 
+export async function getUserId(){
+  const snapshot = await firebase.database().ref('/user_count/id').once('value');
+  return snapshot.val();  
+}
+
 
 export async function getPicId(){
   const snapshot = await firebase.database().ref('/song_pic_id/id').once('value');
@@ -88,10 +93,23 @@ export async function pushPlaylist(user, list){
     }
     console.log(findedUserId);
 
+    firebase.database().ref('/play_queue/' + findedUserId + '/songs_list/').remove();
     let i = 1;
     for(let songId of list){
         firebase.database().ref('/play_queue/' + findedUserId + '/songs_list/' + i + '/id').set(songId);
         i = i + 1;
     }
     
+}
+
+export async function getPlaylistList(id){
+    let ans =[];
+    let snapshot = await firebase.database().ref('/playlists/' + id + '/song_list').once("value");
+    let songList = snapshot.val();
+    for(let song of songList){
+        if(!song)continue;
+
+        ans.push(song.id);
+    }
+    return ans;
 }

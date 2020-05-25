@@ -10,12 +10,12 @@ let Playlist = {
         <section class="playlist-page-section">
         <div class="playlist-head-div">
             <div class="playlist-page-image-div">
-                <a href="#">
+                <button id="play-me" class="playlist-page-play">
                     <img id="img-playlist-on-page" class="playlist-page-image" src="" alt="Cover"></img>
                     <div class="playlist-page-middle-image">
                         <img class="playlist-page-play-image" src="icon/Play.png" alt="Cover"/>
                     </div>
-                </a>
+                </button>
             </div>
             <div class="playlist-page-info-div">  
                 <h1 id="playlist-name-id" class="playlist-page-name">Playlist_Name</h1>
@@ -38,6 +38,7 @@ let Playlist = {
         const plaAuthor = document.getElementById('playlist-author-id');
         const pic = document.getElementById('img-playlist-on-page');
         const editButton = document.getElementById('playlist-edit-button');
+        const playPlaylist = document.getElementById('play-me');
         let createdBy;
         let snapshot = await firebase.database().ref('/playlists/' + playlistId);
 
@@ -110,6 +111,14 @@ let Playlist = {
                 }
                 //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
             }
+        });
+
+        playPlaylist.addEventListener("click",async function(e) {
+            if (firebase.auth().currentUser){
+                let list = await DBGet.getPlaylistList(playlistId);
+                DBGet.pushPlaylist(firebase.auth().currentUser.email, list);
+            }
+            
         });
 
 
