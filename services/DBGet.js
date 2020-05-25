@@ -44,9 +44,21 @@ export async function getImagePlaylist(id){
     return downloadURL;
 }
 
+export async function getSongMP3(id){
+    let ref= firebase.storage().ref();
+    const imgRef = ref.child("/mp3/id" + id + ".mp3");
+    const downloadURL = await imgRef.getDownloadURL();
+    return downloadURL;
+}
+
 export async function getSongId(){
   const snapshot = await firebase.database().ref('/song_id/id').once('value');
   return snapshot.val();
+}
+
+export async function getUserId(){
+  const snapshot = await firebase.database().ref('/user_count/id').once('value');
+  return snapshot.val();  
 }
 
 
@@ -63,4 +75,44 @@ export async function getPlaylistId(){
 export async function getPlaylists(){
     const snapshot = await firebase.database().ref('/playlists').once('value');
     return snapshot.val();
+}
+
+export async function pushPlaylist(user, list){
+   
+    console.log(user);
+
+    const snapshot = await firebase.database().ref('/play_queue').once('value');
+    const queues = snapshot.val();
+    let findedUserId = 0;
+
+    for(let [index,queue] of queues.entries()){
+        if (!queue) continue;
+
+        if (queue.user == user){
+            findedUserId = index;
+            break;
+        }
+    }
+
+    console.log(findedUserId);
+
+    firebase.database().ref('/play_queue/' + findedUserId + '/songs_list/').remove();
+    let i = 1;
+    for(let songId of list){
+        firebase.database().ref('/play_queue/' + findedUserId + '/songs_list/' + i + '/id').set(songId);
+        i = i + 1;
+    }
+    
+}
+
+export async function getPlaylistList(id){
+    let ans =[];
+    let snapshot = await firebase.database().ref('/playlists/' + id + '/song_list').once("value");
+    let songList = snapshot.val();
+    for(let song of songList){
+        if(!song)continue;
+
+        ans.push(song.id);
+    }
+    return ans;
 }

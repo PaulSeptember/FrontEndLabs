@@ -5,21 +5,19 @@ let PlaylistNew = {
     render : async () => {   
         return /*html*/`
         <section class="playlist-page-section">
-        <h1>Playlist editing</h1>
+        <h1 class="playlist-edit-title">Playlist creating</h1>
         <div class="playlist-head-div">
-            <div class="playlist-page-image-div">
-                <a href="#">
+            <div>
+                <div class="playlist-page-image-div">
                     <img id="img-playlist-on-page" class="playlist-page-image" src="" alt="Cover"></img>
-                    <div class="playlist-page-middle-image">
-                        <img class="playlist-page-play-image" src="NO" alt="Change cover"/>
-                    </div>
-                </a>
+                </div>
+                <input type="file" name="file" accept=".png" value="upload" id="upload-file-button" />
+                <label class="picure-upload btn-red" for="upload-file-button">Choose picture</label>
             </div>
+            
             <div class="playlist-page-info-div">  
                 <input id="playlist-name-input-id" class="playlists-edit-name">
-                <!--h1 id="playlist-name-id" class="playlist-page-name">Playlist_Name</h1-->
                 <input id="playlist-desc-input-id" class="playlists-edit-description">
-                <!--p id="playlist-desc-id" class="playlist-page-description">Playlist_Description</p-->
                 <p id="playlist-author-id" class="playlist-page-author">Created by:</p>
             </div>  
             <button class="btn-red" id="playlist-delete-button">Delete</button>
@@ -49,6 +47,7 @@ let PlaylistNew = {
         const searchInput = document.getElementById('playlist-search-input');
         const saveButton = document.getElementById('playlist-save-button');
         const deleteButton = document.getElementById('playlist-delete-button');
+        const uploadPic = document.getElementById('upload-file-button');
 
         let createdBy;
         const playlistIdRef = await firebase.database().ref('/playlist_id/id').once('value');
@@ -120,7 +119,7 @@ let PlaylistNew = {
                                 <a class="song-author" href="/#/artist/${song.author}">${song.author}</a>
                             </div>
                             <div class="duration-div">
-                                <button id="${index}">X</button>
+                                <button class="btn-red" id="${index}">X</button>
                                 <p class="duration">2:22</p>
                             </div>
                         `;
@@ -199,6 +198,18 @@ let PlaylistNew = {
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+        });
+
+        uploadPic.addEventListener('change', async (event) => {
+            let file = event.target.files[0];
+
+            let storageRef = firebase.storage().ref('playlist_pic/idp' + playlistId + '.png');
+            await storageRef.put(file);
+
+            firebase.database().ref('/playlists/' + playlistId + '/pic_id').set("p" + playlistId);
+
+            let picUrl1 = await DBGet.getImagePlaylist("p" + playlistId);
+            pic.src = picUrl1;
         });
     }
 }

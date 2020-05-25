@@ -5,33 +5,35 @@ let Upload = {
         let view =  /*html*/
 
         `    
-       <section id="upload-page-section">
-        <h2 class="sections-text" >Track uploading</h2>
-            <label class="description-text">Upload your own track, add name and author, so all users can listen it!</label>
+        <section id="upload-page-section">
+            <h2 class="sections-text" >Track uploading</h2>
+            <p class="description-text">Upload your own track, add name and author, so all users can listen it!</p>
 
-        <h2 class="upload-helper">Name</h1>
-        <input id="name-input" class="upload-input">
-        <h2 class="upload-helper">Author</h1>
-        <input id="author-input" class="upload-input">
-        <div class="upload-file-div">
-            <label class="btn-light-red" id="upload-file-button-label">Select file
-                <input type='file' accept=".mp3" value="upload" id="upload-file-button">
-            </label>
-            <p id="file-name" class="upload-link"></p>
-        </div>
+            <label for="name-input" class="upload-helper">Name</label>
+            <input id="name-input" class="upload-input">
+            <label for="author-input" class="upload-helper">Author</label>
+            <input id="author-input" class="upload-input">
 
-        <div class="upload-file-div">
-            <label class="btn-light-red" id="upload-img-button-label">Select cover
-                <input type='file' accept=".png" value="upload" id="upload-image-button">
-            </label>
-            <p id="file-img-name" class="upload-link"></p>
-        </div>
-        <p id="upload-second-p" class="description-text">Select genre</p>
+            <div class="upload-file-div">
+                <label class="btn-light-red" id="upload-file-button-label">Select file
+                    <input type='file' accept=".mp3" value="upload" id="upload-file-button">
+                </label>
+                <p id="file-name" class="upload-link"></p>
+            </div>
 
-        <ul id=genre-selection>
+            <div class="upload-file-div">
+                <label class="btn-light-red" id="upload-img-button-label">Select cover
+                    <input type='file' accept=".png" value="upload" id="upload-image-button">
+                </label>
+                <p id="file-img-name" class="upload-link"></p>
+            </div>
+        
+            <p id="upload-second-p" class="description-text">Select genre</p>
+
+            <ul id=genre-selection>
                 <li class="genre-selector-div">
-                    <input type="radio" name="genre-radio" value="alternative" class="genre-selector-checkbox" id="genre-selector-checkbox1">
-                    <label for="genre-selector-checkbox1" class="genre-selector-label">Alternative</label>
+                    <input type="radio" name="genre-radio" value="rock" class="genre-selector-checkbox" id="genre-selector-checkbox1">
+                    <label for="genre-selector-checkbox1" class="genre-selector-label">Rock</label>
                 </li>
                 <li class="genre-selector-div">
                     <input type="radio" name="genre-radio" value="punk" class="genre-selector-checkbox" id="genre-selector-checkbox2">

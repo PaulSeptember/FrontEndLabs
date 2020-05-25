@@ -1,3 +1,5 @@
+import * as DBGet from './../../services/DBGet.js'
+
 let Register = {
 
     render: async () => {
@@ -31,7 +33,12 @@ let Register = {
                 const auth = firebase.auth();
                 const promise = auth.createUserWithEmailAndPassword(email.value, pass.value);
                 promise
-                    .then(function(regUser){
+                    .then(async function(regUser){
+                        let lastUser = await DBGet.getUserId();
+                        await firebase.database().ref("/play_queue/" + lastUser).set({ user : email.value});
+
+                        await firebase.database().ref('/user_count/id').set(lastUser + 1);
+
                         window.location.href = '/#/';
                     })
                     .catch(alert(e.message));

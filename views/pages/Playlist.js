@@ -10,12 +10,12 @@ let Playlist = {
         <section class="playlist-page-section">
         <div class="playlist-head-div">
             <div class="playlist-page-image-div">
-                <a href="#">
+                <button id="play-me" class="playlist-page-play">
                     <img id="img-playlist-on-page" class="playlist-page-image" src="" alt="Cover"></img>
                     <div class="playlist-page-middle-image">
                         <img class="playlist-page-play-image" src="icon/Play.png" alt="Cover"/>
                     </div>
-                </a>
+                </button>
             </div>
             <div class="playlist-page-info-div">  
                 <h1 id="playlist-name-id" class="playlist-page-name">Playlist_Name</h1>
@@ -38,6 +38,7 @@ let Playlist = {
         const plaAuthor = document.getElementById('playlist-author-id');
         const pic = document.getElementById('img-playlist-on-page');
         const editButton = document.getElementById('playlist-edit-button');
+        const playPlaylist = document.getElementById('play-me');
         let createdBy;
         let snapshot = await firebase.database().ref('/playlists/' + playlistId);
 
@@ -63,9 +64,10 @@ let Playlist = {
 
         const songsContainer = document.getElementById('playlist-songs-list');
 
-        snapshot = await firebase.database().ref('/playlists/' + playlistId + '/song_list');
-        snapshot.on("value", async function(snapshot) {
+        snapshot = await firebase.database().ref('/playlists/' + playlistId + '/song_list').once("value");
+        //snapshot.on("value", async function(snapshot) {
             let idList = snapshot.val();
+            console.log(idList);
             //idList.forEach(async function(itemRef){
             for(const itemRef of idList){
                 if (!itemRef)continue;
@@ -80,9 +82,12 @@ let Playlist = {
                 playlistLI.innerHTML = `
                     <div class="song-div">
                         <div class="image-song-div">
-                            <a class="image-song-a" href="#"><img class="image-song" src=${picUrl2} alt="Cover"/>
-                                <div class="middle"><img class="song-play-image" src="icon/Play.png" alt="Cover"/></div>
-                            </a>
+                            <button class="image-song-a">
+                                <img class="image-song" src=${picUrl2} alt="Cover"/>
+                                <div class="middle">
+                                    <img id="${songId}" class="song-play-image" src="icon/Play.png" alt="Cover"/>
+                                </div>
+                            </button>
                         </div>
                         <p class="song-name">${song.name}</p>
                         <a class="song-author" href="/#/artist/${song.author}">${song.author}</a>
@@ -94,9 +99,33 @@ let Playlist = {
                 songsContainer.appendChild(playlistLI);
                 
             }//);
-        }, function (errorObject) {
+        /*}, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
+        });*/
+
+        songsContainer.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }else{
+                    alert("Login first.")
+                }
+            }
         });
+
+        playPlaylist.addEventListener("click",async function(e) {
+            if (firebase.auth().currentUser){
+                let list = await DBGet.getPlaylistList(playlistId);
+                DBGet.pushPlaylist(firebase.auth().currentUser.email, list);
+            }else{
+                alert("Login first.")
+            }
+            
+        });
+
+
     }
 }
 
