@@ -116,8 +116,6 @@ let Home = {
 
     }
     , after_render: async () => {
-        console.log(await DBGet.getPlaylistList(13));
-        //console.log( firebase.auth().currentUser.email);
         const chartContainer = document.getElementById('chart-cont');
         const uploadSection = document.getElementById('upload-container-id');
         const playlistSection = document.getElementById('my-playlists-id');
@@ -130,11 +128,6 @@ let Home = {
         let playlists = await DBGet.getPlaylists();
         const artists = await DBGet.getArtistsChart();
         let user = "";
-
-        //await DBGet.pushPlaylist("test@mail.ru",[19,8]);
-        //Player.songId = 20;
-        //document.getElementById('player_container').contentWindow.initSong(0);
-        //Player.newQueue([19]);
 
         firebase.auth().onAuthStateChanged(firebaseUser => {
             if (firebaseUser){
@@ -155,12 +148,9 @@ let Home = {
 
         const userPlaylists = document.getElementById('user-playlists');
         if(playlists && firebase.auth().currentUser){
-            //console.log(firebase.auth().currentUser);
-            //playlists = playlists.reverse();
             for(let [index,playlist] of playlists.entries()){
                 if (!playlist)continue;
                 if (playlist.created != firebase.auth().currentUser.email)continue;
-                //console.log(index);
                 const picUrl = await DBGet.getImagePlaylist(playlist.pic_id);
                 let playlistLI = document.createElement('LI');
                 playlistLI.className = 'playlist-list-item';
@@ -204,9 +194,9 @@ let Home = {
             });
         }
 
+
         if (artists){
-            artists.forEach(async function(artistRef){ //КАКОГО Х ОН СИНХРОННЫЙ И НЕ ЖДЕТ AWAIT ????!??!? 
-                //console.log(artistRef);
+            artists.forEach(async function(artistRef){ 
                 const snapshot = await firebase.database().ref('/artists/' + artistRef.id).once('value');
                 const artist = snapshot.val();
                 const picUrl = await DBGet.getImageArtist(artist.pic_id);
@@ -223,7 +213,6 @@ let Home = {
                  artistList.appendChild(artistLI);
             });
         }
-
         if (songs){
             let i = 1;
             for(const songRef of songs){
@@ -249,7 +238,6 @@ let Home = {
                 i = i + 1;
             };
         }
-
         chartContainer.addEventListener("click",async function(e) {
             console.log(e.target.nodeName);
             if(e.target && e.target.nodeName == "IMG") {

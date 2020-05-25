@@ -78,18 +78,19 @@ let Player = {
                         console.log(songs);
 
                         songsQueue = [];
+                        if (first && songs == null){
+                            section.classList.add("hide");
+
+                            break;
+                        }else{
+                            section.classList.remove("hide");
+                        }
                         for(const song of songs){
                             if (!song) continue;
                             console.log(song.id);
                             songsQueue.push(song.id);
                         }
-                        console.log(songsQueue.length);
-                        if (first && songsQueue.length == 0){
-                            section.classList.add("hide");
-                        }else{
-                            section.classList.remove("hide");
-                        }
-
+                       
                         currentSong = 0;
                         await getSong();
                         break;

@@ -35,9 +35,9 @@ let Register = {
                 promise
                     .then(async function(regUser){
                         let lastUser = await DBGet.getUserId();
-                        firebase.database().ref("/play_queue/" + lastUser + "/user").set(email);
+                        await firebase.database().ref("/play_queue/" + lastUser).set({ user : email.value});
 
-                        firebase.database().ref('/song_pic_id/id').set(lastUser + 1);
+                        await firebase.database().ref('/user_count/id').set(lastUser + 1);
 
                         window.location.href = '/#/';
                     })

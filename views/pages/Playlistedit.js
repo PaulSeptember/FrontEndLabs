@@ -19,9 +19,7 @@ let PlaylistEdit = {
             </div>
             <div class="playlist-page-info-div">  
                 <input id="playlist-name-input-id" class="playlists-edit-name">
-                <!--h1 id="playlist-name-id" class="playlist-page-name">Playlist_Name</h1-->
                 <input id="playlist-desc-input-id" class="playlists-edit-description">
-                <!--p id="playlist-desc-id" class="playlist-page-description">Playlist_Description</p-->
                 <p id="playlist-author-id" class="playlist-page-author">Created by:</p>
             </div>  
             <button class="btn-red" id="playlist-delete-button">Delete</button>
