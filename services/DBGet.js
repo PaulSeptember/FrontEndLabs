@@ -78,7 +78,9 @@ export async function getPlaylists(){
 }
 
 export async function pushPlaylist(user, list){
-    //TODO CLEAN SHIT FROM DB
+   
+    console.log(user);
+
     const snapshot = await firebase.database().ref('/play_queue').once('value');
     const queues = snapshot.val();
     let findedUserId = 0;
@@ -91,6 +93,7 @@ export async function pushPlaylist(user, list){
             break;
         }
     }
+
     console.log(findedUserId);
 
     firebase.database().ref('/play_queue/' + findedUserId + '/songs_list/').remove();

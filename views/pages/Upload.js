@@ -32,8 +32,8 @@ let Upload = {
 
             <ul id=genre-selection>
                 <li class="genre-selector-div">
-                    <input type="radio" name="genre-radio" value="alternative" class="genre-selector-checkbox" id="genre-selector-checkbox1">
-                    <label for="genre-selector-checkbox1" class="genre-selector-label">Alternative</label>
+                    <input type="radio" name="genre-radio" value="rock" class="genre-selector-checkbox" id="genre-selector-checkbox1">
+                    <label for="genre-selector-checkbox1" class="genre-selector-label">Rock</label>
                 </li>
                 <li class="genre-selector-div">
                     <input type="radio" name="genre-radio" value="punk" class="genre-selector-checkbox" id="genre-selector-checkbox2">

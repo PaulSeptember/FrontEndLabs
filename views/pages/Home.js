@@ -65,35 +65,38 @@ let Home = {
             <div class="description-text">Select some genres and we will try to find </div>
             <ul id=genre-selection>
                 <li class="genre-selector-div">
-                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox1">
-                    <label for="genre-selector-checkbox1" class="genre-selector-label">Alternative</label>
+                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox1" value="rock">
+                    <label for="genre-selector-checkbox1" class="genre-selector-label">Rock</label>
                 </li>
                 <li class="genre-selector-div">
-                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox2">
+                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox2" value="punk">
                     <label for="genre-selector-checkbox2" class="genre-selector-label">Punk</label>
                 </li>
                 <li class="genre-selector-div">
-                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox3">
+                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox3" value="classic">
                     <label for="genre-selector-checkbox3" class="genre-selector-label">Classic</label>
                 </li>
                 <li class="genre-selector-div">
-                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox4">
+                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox4" value="pop">
                     <label for="genre-selector-checkbox4" class="genre-selector-label">Pop</label>
                 </li>
                 <li class="genre-selector-div">
-                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox5">
+                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox5" value="jazz">
                     <label for="genre-selector-checkbox5" class="genre-selector-label">Jazz</label>
                 </li>
                 <li class="genre-selector-div">
-                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox6">
+                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox6" value="electro">
                     <label for="genre-selector-checkbox6" class="genre-selector-label">Electro</label>
                 </li>
                 <li class="genre-selector-div">
-                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox7">
+                    <input type="checkbox" class="genre-selector-checkbox" id="genre-selector-checkbox7" value="rap and hip-hop">
                     <label for="genre-selector-checkbox7" class="genre-selector-label">Rap and Hip-Hop</label>
                 </li>
             </ul>
-            <button id="genres-select-button" class="btn-red">Find</a>
+            <button id="genres-select-button" class="btn-red">Find</button>
+            <div>
+                <ul class="chart-items" id="search-genre-cont"></ul>   
+            </div>
         </section>
 
         <section class="artists-container">
@@ -123,6 +126,9 @@ let Home = {
         const playlistnav = document.getElementById('playlists-nav');
         const releasesList = document.getElementById('releases-ul-div');
         const artistList = document.getElementById('artist-list-id');
+        const genresFindButton = document.getElementById('genres-select-button');
+        const genresContainer = document.getElementById('search-genre-cont');
+
         const songs = await DBGet.getChart();
         const playlistsChart = await DBGet.getPlaylistsChart();
         let playlists = await DBGet.getPlaylists();
@@ -244,6 +250,8 @@ let Home = {
                 console.log(e.target.id);
                 if (firebase.auth().currentUser){
                     DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }else{
+                    alert("Login first.")
                 }
             }
         });
@@ -255,6 +263,8 @@ let Home = {
                 if (firebase.auth().currentUser){
                     let list = await DBGet.getPlaylistList(e.target.id);
                     DBGet.pushPlaylist(firebase.auth().currentUser.email, list);
+                }else{
+                    alert("Login first.")
                 }
             }
         });
@@ -267,6 +277,61 @@ let Home = {
                 if (firebase.auth().currentUser){
                     let list = await DBGet.getPlaylistList(e.target.id);
                     DBGet.pushPlaylist(firebase.auth().currentUser.email, list);
+                }else{
+                    alert("Login first.")
+                }
+            }
+        });
+
+        genresFindButton.addEventListener("click",async function(e) {
+            genresContainer.innerHTML = "";
+            var checkedValues = []; 
+            var inputElements = document.getElementsByClassName('genre-selector-checkbox');
+
+            for(let checkBox of inputElements){
+                if(checkBox.checked){
+                    checkedValues.push(checkBox.value);
+                    console.log(checkBox.value)
+                }
+            }
+
+            const snapshot = await firebase.database().ref('/songs').once('value');
+            const songsList = snapshot.val();
+            let i = 1;
+
+            for(let [index,song] of songsList.entries()){
+                if (!song) continue;
+                if (checkedValues.includes(song.genre)){
+                    console.log(song.name);
+                    const picUrl = await DBGet.getImageSong(song.pic_id);
+                    let songLI = document.createElement('LI');
+                    songLI.className = 'song-item';
+                    songLI.innerHTML = `        
+                                                <div class="image-song-div">
+                                                    <button class="image-song-a">
+                                                        <img class="image-song" src=${picUrl} alt="Cover"/>
+                                                        <div class="middle">
+                                                            <img id="${index}" class="song-play-image" src="icon/Play.png" alt="Cover"/>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <p class="song-name">${song.name}</p>
+                                                <a class="song-author" href="/#/artist/${encodeURIComponent(song.author)}">${song.author}</a>`;
+                    genresContainer.appendChild(songLI);
+                    i = i + 1;
+                    if (i==16)break;
+                }
+            }
+        });
+
+        genresContainer.addEventListener("click",async function(e) {
+            console.log(e.target.nodeName);
+            if(e.target && e.target.nodeName == "IMG") {
+                console.log(e.target.id);
+                if (firebase.auth().currentUser){
+                    DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }else{
+                    alert("Login first.")
                 }
             }
         });

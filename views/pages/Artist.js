@@ -80,6 +80,8 @@ let Artist = {
                 console.log(e.target.id);
                 if (firebase.auth().currentUser){
                     DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }else{
+                    alert("Login first.")
                 }
                 //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
             }

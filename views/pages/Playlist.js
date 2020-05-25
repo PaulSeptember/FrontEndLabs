@@ -64,9 +64,10 @@ let Playlist = {
 
         const songsContainer = document.getElementById('playlist-songs-list');
 
-        snapshot = await firebase.database().ref('/playlists/' + playlistId + '/song_list');
-        snapshot.on("value", async function(snapshot) {
+        snapshot = await firebase.database().ref('/playlists/' + playlistId + '/song_list').once("value");
+        //snapshot.on("value", async function(snapshot) {
             let idList = snapshot.val();
+            console.log(idList);
             //idList.forEach(async function(itemRef){
             for(const itemRef of idList){
                 if (!itemRef)continue;
@@ -98,9 +99,9 @@ let Playlist = {
                 songsContainer.appendChild(playlistLI);
                 
             }//);
-        }, function (errorObject) {
+        /*}, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
-        });
+        });*/
 
         songsContainer.addEventListener("click",async function(e) {
             console.log(e.target.nodeName);
@@ -108,8 +109,9 @@ let Playlist = {
                 console.log(e.target.id);
                 if (firebase.auth().currentUser){
                     DBGet.pushPlaylist(firebase.auth().currentUser.email, [e.target.id]);
+                }else{
+                    alert("Login first.")
                 }
-                //firebase.database().ref('/playlists/' + playlistId + "/song_list/" + e.target.id).remove();
             }
         });
 
@@ -117,6 +119,8 @@ let Playlist = {
             if (firebase.auth().currentUser){
                 let list = await DBGet.getPlaylistList(playlistId);
                 DBGet.pushPlaylist(firebase.auth().currentUser.email, list);
+            }else{
+                alert("Login first.")
             }
             
         });
